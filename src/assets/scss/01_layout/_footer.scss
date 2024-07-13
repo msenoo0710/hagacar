@@ -1,0 +1,115 @@
+@charset "utf-8";
+@import "../00_base/value";
+/* ///////////////////////////////////////////
+  footer.scss
+  フッターに関する設定
+/////////////////////////////////////////// */
+.footer{
+  background-color: white;
+  &__pagetop{
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: all .3s ease-out;
+    transition: all .3s ease-out;
+    position: fixed;
+    z-index: 900;
+    right: 30px;
+    bottom: 30px;
+    @media(max-width:1200px){
+        right: 20px;
+        bottom: 80px;
+    }
+    &.scrolled{
+        opacity: 1;
+        visibility: visible;
+        -webkit-transition: all .3s ease-out;
+        transition: all .3s ease-out;
+    }
+    a{
+        height: 45px;
+        width: 45px;
+        background: $mainColor;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        -webkit-transition: all .3s ease-out;
+        transition: all .3s ease-out;
+        text-decoration: none;
+        &:hover{
+            opacity: 0.8;
+        }
+        &::after{
+            content: '';
+            height: 10px;
+            width: 10px;
+            border-top: 3px solid white;
+            border-right: 3px solid white;
+            transform: translateY(20%) rotate(-45deg);
+        }
+        span{
+            display: none;
+        }
+    }
+  }
+  &__wrap{
+    display: grid;
+    gap: 15px;
+    @include smartphone{
+      grid-template-columns: 1fr;
+      padding: 40px 20px;
+    }
+    @include screen{
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, auto);
+      padding: 60px 80px;
+    }
+  }
+  &__logo{
+    grid-area: 1 / 1 / 2 / 2;
+    &-link{
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      white-space: nowrap;
+      @include trans;
+      span{
+        font-size: 2rem;
+        font-weight: 700;
+        color: $mainColor;
+      }
+    }
+  }
+  &__content{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    @include screen{
+      grid-area: 2 / 1 / 3 / 2;
+    }
+  }
+  &__address,
+  &__phone {
+    p {
+      font-size: 1.4rem;
+      font-weight: 500;
+    }
+  }
+  &__copyright{
+    display: flex;
+    @include smartphone{
+      justify-content: center;
+    }
+    @include screen{
+      grid-area: 1 / 2 / 3 / 3;
+      align-items: flex-end;
+      margin-left: auto;
+    }
+    small{
+      font-size: 1.4rem;
+      font-weight: 500;
+    }
+  }
+}

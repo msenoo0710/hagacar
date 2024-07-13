@@ -1,0 +1,203 @@
+@charset "utf-8";
+@use 'sass:math';
+
+/* ///////////////////////////////////////////
+  value.scss
+  変数・mixinに関する設定
+/////////////////////////////////////////// */
+/*====================================
+  カラー
+=====================================*/
+$color1:#00008b; //青
+$color2:#FFF; //白
+$color3:#333; //黒
+$color4: #F4F4F4; //薄いグレー
+$color5: #E6E6E6; //グレー
+$color6: #AAAAAA; //グレー
+
+$mainColor:$color1; //青
+$baseColor:$color2; //白
+$fontColor:$color3; //黒
+$bgColor:$color4; //薄いグレー
+$borderColor:$color5; //グレー
+$hoverColor:$color6; //グレー
+
+
+/*====================================
+  画像パス
+=====================================*/
+$imgPath:'../images';
+
+
+/*====================================
+  フォント
+=====================================*/
+$baseFont: "Noto Sans JP", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ", "Meiryo","ＭＳ Ｐゴシック", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+$serif: "Noto Serif JP", "Hiragino Mincho ProN W3", "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "游明朝", YuMincho, "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif;
+
+//行間
+$pclh:1.5;
+$splh:1.4;
+
+//可変フォントサイズ
+@mixin fontSize(
+    $fs_min: 14,
+    $width_small: 576,//576
+    $width_large: 1300,//992
+    $fs_max: 16
+) {
+    $preferred_vw_base: math.div(($fs_max - $fs_min), ($width_large - $width_small));
+    $preferred_vw: $preferred_vw_base * 100;
+    $preferred_rem: $width_small * -1 * $preferred_vw_base + $fs_min;
+    font-size: clamp(
+        #{$fs_min * 0.1rem},
+        calc(#{$preferred_rem * 0.1rem} + #{$preferred_vw} * 1vw),
+        #{$fs_max * 0.1rem}
+    );
+}
+
+
+
+/*====================================
+  レイアウト
+=====================================*/
+@mixin makeContainer(
+    $mx:1260px,
+    $margin:0 auto,
+    $pd_pc:0 30px,
+    $pd_tb:0 30px,
+    $pd_sp:0 20px
+  ){
+    display: block;
+    max-width: $mx;
+    margin: $margin;
+    @include smartphone {padding: $pd_sp;}
+    @include tablet {padding: $pd_tb;}
+    @include desktop {padding: $pd_pc;}
+}
+
+@mixin trans($target:all,$speed:.3s,$style:ease-out) {
+  -webkit-transition: $target $speed $style;
+  -moz-transition: $target $speed $style;
+  -ms-transition: $target $speed $style;
+  transition: $target $speed $style;
+}
+
+@mixin lhCrop($line-height) {
+  &::before {
+    content: "";
+    display: block;
+    height: 0;
+    width: 0;
+    margin-top: calc((1 - #{$line-height}) * 0.5em);
+  }
+}
+
+/*====================================
+  ボタン
+=====================================*/
+@mixin makeButton(
+    $mx: 440px,
+    $margin: 0 auto,
+    $pd_pc: 28px 45px,
+    $pd_tb: 28px 45px,
+    $pd_sp: 17px 25px,
+    $font-weight: 700,
+    $color: white,
+    $font-size_pc: 24px,
+    $font-size_tb: 24px,
+    $font-size_sp: 16px,
+  ) {
+    display: block;
+    max-width: $mx;
+    margin: $margin;
+    font-weight: $font-weight;
+    color: $color;
+    line-height: 1.1;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    text-align: center;
+    background-color: black;
+    @include trans;
+    @include smartphone {
+      padding: $pd_sp;
+      font-size: $font-size_sp;
+    }
+    @include tablet {
+      padding: $pd_tb;
+      font-size: $font-size_tb;
+    }
+    @include desktop {
+      padding: $pd_pc;
+      font-size: $font-size_pc;
+    }
+    &:hover{
+      opacity: 0.6;
+    }
+}
+
+
+/*====================================
+  ブレイクポイント
+=====================================*/
+$width-desktop: 1200px;
+$width-smartphone: 834px;
+$width-scrollbar: 20px;
+
+//スマホ表示: ～834px
+@mixin smartphone {
+  @media only screen and (max-width: $width-smartphone) {
+    @content;
+  }
+}
+
+//スマホ・タブレット兼用: ～1199px ～
+@mixin mobile {
+  @media print, screen and (max-width: $width-desktop + $width-scrollbar - 1) {
+    @content;
+  }
+}
+
+//PC・タブレット兼用: 835px ～
+@mixin screen {
+  @media print, screen and (min-width: $width-smartphone + 1) {
+    @content;
+  }
+}
+
+//タブレット表示: 835px ～ 1199px
+@mixin tablet {
+  @media only screen and (min-width: $width-smartphone + 1) and (max-width: $width-desktop + $width-scrollbar - 1) {
+    @content;
+  }
+}
+
+//PC表示: 1200px～
+@mixin desktop {
+  @media print, screen and (min-width: $width-desktop + $width-scrollbar) {
+    @content;
+  }
+}
+
+//画面縦長
+@mixin portrait {
+  @media print, screen and (orientation: portrait){
+    @content;
+  }
+}
+
+//画面横長
+@mixin landscape {
+  @media print, screen and (orientation: landscape){
+    @content;
+  }
+}
+
+ //印刷用
+@mixin print {
+  @media print {
+    @content;
+  }
+}
+
+

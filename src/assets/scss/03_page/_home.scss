@@ -1,0 +1,206 @@
+@charset "utf-8";
+@import "../00_base/value";
+/* /////////////////////////////////////////////////////////
+  トップページ
+///////////////////////////////////////////////////////// */
+
+/* ======================
+ページコンテンツ
+====================== */
+.page--home {
+  .mainvisual {
+    position: relative;
+    overflow: hidden;
+    height: 100svh;
+    &__wrap {
+      position: absolute;
+      z-index: 2;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(black, .35);
+    }
+    &__heading{
+      opacity: 1;
+      display: flex;
+      flex-direction: row;
+      position: absolute;
+      z-index: 4;
+      p {
+        @include fontSize($fs_min: 28,$fs_max: 38);
+        font-weight: 700;
+        color: white;
+        writing-mode: vertical-rl;
+      }
+    }
+    &__content {
+      @include makeContainer($mx:1000px, $pd_pc:60px, $pd_tb:60px, $pd_sp:15px);
+      p {
+        @include fontSize($fs_min: 18,$fs_max: 24);
+        line-height: 3;
+        font-weight: 700;
+        color: white;
+
+        @include smartphone {
+          line-height: 2.6;
+        }
+      }
+    }
+    &__background {
+      &--video {
+        video {
+          position: absolute;
+          z-index: -1;
+          top: 50%;
+          left: 50%;
+          min-width: 100%;
+          min-height: 100%;
+          transform: translate(-50%, -50%);
+        }
+      }
+    }
+    .fade-in { opacity: 1; transition: opacity 1s ease-in-out; }
+  }
+
+  .service{
+    @include makeContainer($mx:1720px, $pd_pc:150px 0, $pd_tb:150px 0, $pd_sp:100px 0);
+    &__wrap{
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+
+      @include smartphone {
+        gap: 0;
+      }
+    }
+    &__heading{
+      display: flex;
+      flex-direction: column;
+      padding: 0 60px;
+      @media(max-width:1000px){
+        padding: 0 20px;
+      }
+
+      i {
+        font-family: 'Oswald';
+        @include fontSize($fs_min: 80,$fs_max: 160);
+        font-weight: 700;
+        line-height: 1;
+        color: $mainColor;
+      }
+
+      h2 {
+        @include fontSize($fs_min: 16,$fs_max: 24);
+        font-weight: 900;
+      }
+    }
+    &__content{
+      &--list{
+        counter-reset: item;
+        border-top: 2px solid $borderColor;
+        li{
+          counter-increment: item;
+          a{
+            display: grid;
+            grid-template-columns: 30% auto;
+            grid-template-rows: auto 1fr;
+            align-items: start;
+            padding: 40px 60px;
+            gap: 20px;
+            border-bottom: 2px solid $borderColor;
+            @media(max-width:1000px){
+              padding: 20px;
+              gap: 10px;
+            }
+            text-decoration: none;
+            @include trans;
+            &:hover{
+              opacity: 0.8;
+            }
+          }
+          figre{
+            grid-area: 1 / 1 / 3 / 2;
+          }
+          h3{
+            grid-area: 1 / 2 / 2 / 3;
+            @include fontSize($fs_min: 24,$fs_max: 40);
+            font-weight: 700;
+            color: $mainColor;
+            &::before{
+              content: counter(item, decimal-leading-zero)". ";
+            }
+          }
+          p{
+            grid-area: 2 / 2 / 3 / 3;
+            @include fontSize($fs_min: 14,$fs_max: 24);
+            font-weight: 700;
+          }
+        }
+      }
+    }
+    &:nth-child(odd){
+      grid-template-columns: 1fr auto;
+      .overview__heading{
+        align-items: flex-end;
+      }
+      .overview__content--description{
+        @media(max-width:1000px){
+          flex-direction: column;
+        }
+        @include screen{
+          order: 2;
+          flex-direction: row-reverse;
+        }
+      }
+      .overview__content--background{
+        @include screen{
+          order: 1;
+        }
+      }
+    }
+  }
+
+  .news{
+    &__wrap{
+      @include makeContainer($mx:1320px, $pd_pc:80px 60px, $pd_tb:80px 60px, $pd_sp:60px 15px);
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+    }
+    &__heading {
+      display: flex;
+      flex-direction: column;
+
+      i {
+        font-family: Roboto Condensed;
+        font-size: 11.0rem;
+        font-weight: 700;
+        line-height: 1;
+        color: black;
+
+        @include smartphone {
+          font-size: 4.5rem;
+        }
+      }
+      h2 {
+        font-size: 2.4rem;
+        font-weight: 900;
+        color: black;
+
+        @include smartphone {
+          font-size: 1.4rem;
+        }
+      }
+    }
+    &__content{
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+    }
+  }
+}
