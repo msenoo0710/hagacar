@@ -3,6 +3,25 @@
 ///////////////////////////////////////////////////////// */
 (function($){
   $(function(){
+    
+    // ヘッダー背景
+    var headerCL = new ScrollMagic.Controller();
+    var scene = new ScrollMagic.Scene({
+        triggerElement: '.mainvisual', // トリガーとなる要素
+        duration: $('.mainvisual').outerHeight(), // .mainvisualの高さ
+        triggerHook: 0, // ページの上端でトリガー
+    })
+    .on('leave', function () {
+        // .headerに.currentクラスを追加
+        $('.header').addClass('current');
+    })
+    .on('enter', function () {
+        // .headerから.currentクラスを削除
+        $('.header').removeClass('current');
+    })
+    // コントローラーにシーンを追加
+    .addTo(headerCL);
+
 
     // スクロールイベントの監視を追加
     $(window).scroll(function() {
@@ -14,17 +33,6 @@
       }
     });
 
-    // ページトップに戻る
-    $('.footer__pagetop').on('click', function(e) {
-      e.preventDefault();
-      // ここでページトップにスクロールするアニメーションを実行します
-      $("html, body").css('overflow-x', 'hidden'); // スクロール前にoverflow-xをhiddenに設定
-      $("html, body").animate({
-          scrollTop: 0 // ページのトップに移動
-      }, 800, 'swing', function() {
-          $("html, body").css('overflow-x', ''); // スクロール完了後に設定を解除
-      });
-    });
 
     // マウスホバーで子メニューを表示する
     $('.header__nav .child').hover(function() {
@@ -41,35 +49,55 @@
 
     // ハンバーガーメニュー
     $(".header__hamburger-bars").click(function () {
-      var $header = $(".header");
-      var $headerWrap = $(".header__wrap");
       var $mobileMenu = $(".header__mobile");
-      var $body = $("body");
+      var $mobileContent = $(".header__mobile-content");
+      var $mobileWrap = $(".header__mobile-wrap");
       $(this).toggleClass('active');
 
       if ($mobileMenu.css('display') === 'none') {
-        $mobileMenu.velocity("slideDown", {
+        $mobileMenu.css('display', 'block');
+        $mobileWrap.velocity({opacity: 1});
+        $mobileContent.css({
+          display: 'block',
+          right: '-100%'
+        }).velocity({
+          right: "0%"
+        }, {
           duration: 300,
-          begin: function(elements) {
-            var headerHeight = $headerWrap.outerHeight();
-          },
-          complete: function(elements) {
-            $body.css('overflow', 'hidden');
-            $mobileMenu.find('.header__mobile-content').velocity({ opacity: 1 }, { duration: 300 });
+          complete: function() {
+            $mobileContent.velocity({ opacity: 1 }, { duration: 300 });
           }
         });
       } else {
-        $mobileMenu.find('.header__mobile-content').velocity({ opacity: 0 }, { duration: 0 });
-        $mobileMenu.velocity("slideUp", {
-          duration: 200,
-          complete: function(elements) {
-            $(elements).css('display', 'none');
-            $body.css('overflow', '');
+        $mobileWrap.velocity({opacity: 0});
+        $mobileContent.velocity({
+          opacity: 0,
+          right: "-100%"
+        }, {
+          duration: 300,
+          complete: function() {
+            $mobileMenu.css('display', 'none');
+            $mobileContent.css('opacity', '1');
           }
         });
       }
     });
-
+    $(".header__mobile-nav-close").click(function () {
+      var $mobileMenu = $(".header__mobile");
+      var $mobileContent = $(".header__mobile-content");
+      var $mobileWrap = $(".header__mobile-wrap");
+      $mobileWrap.velocity({opacity: 0});
+      $mobileContent.velocity({
+        opacity: 0,
+        right: "-100%"
+      }, {
+        duration: 300,
+        complete: function() {
+          $mobileMenu.css('display', 'none');
+          $mobileContent.css('opacity', '1');
+        }
+      });
+    });
 
     // アニメーションさせたい要素をすべて選択
     var ScrollCL = new ScrollMagic.Controller();

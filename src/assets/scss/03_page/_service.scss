@@ -1,0 +1,170 @@
+@charset "utf-8";
+@import "../00_base/value";
+/* /////////////////////////////////////////////////////////
+  サービス
+///////////////////////////////////////////////////////// */
+
+/* ======================
+ページコンテンツ
+====================== */
+.page--service {
+  padding-bottom: 80px;
+  @include smartphone{
+    padding-bottom: 60px;
+  }
+  .intro{
+    &__wrap{
+      @include makeContainer($mx:1320px, $pd_pc:60px, $pd_tb:60px, $pd_sp:30px);
+    }
+    &__nav{
+      ul{
+        display: flex;
+        justify-content: center;
+        li{
+          a{
+            min-width: 146px;
+            display: block;
+            padding: 1em;
+            @include fontSize($fs_min: 16,$fs_max: 24);
+            font-weight: 500;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            background-color: $mainColor;
+            border: 2px solid $mainColor;
+            @include trans;
+            @include smartphone{
+              min-width: 96px;
+            }
+            &:hover{
+              color: $mainColor;
+              background-color: white;
+            }
+          }
+          &:nth-of-type(1){
+            a{
+              border-right: none;
+              border-top-left-radius: 1em;
+              border-bottom-left-radius: 1em;
+            }
+          }
+          &:nth-of-type(2){
+            a{
+              border-left: 2px solid white;
+              border-right: 2px solid white;
+            }
+          }
+          &:nth-of-type(3){
+            a{
+              border-left: none;
+              border-top-right-radius: 1em;
+              border-bottom-right-radius: 1em;
+            }
+          }
+        }
+      }
+    }
+  }
+  .service{
+    @include makeContainer($mx:1320px, $pd_pc:0 60px, $pd_tb:0 60px, $pd_sp:0 20px);
+    &__wrap{
+      @include makeContainer($mx:1320px, $pd_pc:80px 60px, $pd_tb:80px 60px, $pd_sp:60px 20px);
+      background-color: #eaf7fd;
+      border-radius: 2em;
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+    }
+    &__heading{
+      display: flex;
+      flex-direction: column;
+
+      i {
+        @include fontSize($fs_min: 40,$fs_max: 160);
+        font-weight: 700;
+        line-height: 1;
+        color: $mainColor;
+      }
+
+      h2 {
+        @include fontSize($fs_min: 24,$fs_max: 40);
+        font-weight: 700;
+        color: $mainColor;
+      }
+    }
+    &__content{
+      &--list{
+        counter-reset: item;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        li{
+          counter-increment: item;
+          background-color: #eaf7fd;
+          border-radius: 2em;
+          a{
+            display: grid;
+            grid-template-columns: 40% auto;
+            align-items: start;
+            padding: 40px 60px;
+            gap: 20px;
+            @media(max-width:1000px){
+              grid-template-columns: 1fr;
+              padding: 20px;
+              gap: 10px;
+            }
+            text-decoration: none;
+            >div{
+              display: flex;
+              flex-direction: column;
+              gap: 20px;
+            }
+            @include trans;
+            &:hover{
+              opacity: 0.8;
+            }
+          }
+          figre{
+            img{
+              border-radius: 2em;
+              width: 100%;
+              height: 100%;
+              aspect-ratio: 3 / 2;
+              object-fit: cover;
+            }
+          }
+          
+          h3{
+            @include fontSize($fs_min: 24,$fs_max: 40);
+            font-weight: 700;
+            color: $mainColor;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            &::before{
+              content: counter(item, decimal-leading-zero);
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              width: 60px;
+              height: 60px;
+              color: white;
+              border-radius: 50%;
+              background-color: $mainColor;
+            }
+          }
+          p{
+            @include fontSize($fs_min: 16,$fs_max: 20);
+            font-weight: 700;
+          }
+          .more{
+            span{
+              color: white!important;
+              background-color: $mainColor;
+            }
+          }
+        }
+      }
+    }
+  }
+}

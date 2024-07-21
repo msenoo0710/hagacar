@@ -4,248 +4,74 @@
   module.scss
   各ページで使い回すパーツやスタイルに関する記述
 /////////////////////////////////////////// */
-.mod {
 
-  /* ======================
-  見出し
-  ====================== */
-  &__heading1 {
-    @include lhCrop(1.4);
-    line-height: 1.4;
-    letter-spacing: 0.05em;
-    text-align: center;
-    @include smartphone {
-      font-size: 2.8rem;
-    }
-    @include screen {
-      font-size: 3.4rem;
-    }
-    span {
-      color: $mainColor;
-      display: block;
-      @include smartphone {
-        font-size: 1.6rem;
-        margin-top: 15px;
-      }
-      @include screen {
-        font-size: 1.8rem;
-        margin-top: 20px;
-      }
-    }
-  }
+.mod{
 
-    /* ======================
-    パンくずリスト
-  ====================== */
-  &__breadcrumb {
-    @include makeContainer;
-    margin-bottom: 55px;
-    > span {
-      line-height: 1.6;
-      color: $fontColor;
-      font-size: 1.4rem;
-      letter-spacing: 0.05em;
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      margin: 0 auto;
-      
-      > span {
-        color: $fontColor;
-        margin-right: 0.5em;
-        &:nth-of-type(n+2) {
-          margin-left: 0.5em;
-        }
-
-        a {
-          color: $fontColor;
-          text-decoration: none;
-          transition: all .2s ease-out;
-          &:hover{
-            color: $mainColor;
-          }
-        }
-      }
-    }
-  }
-  /* ======================
-  投稿一覧 ページネーション
-  ====================== */
-  &__pagination {
-    @include makeContainer;
-    line-height: 1;
-    .pagination {
-      .page-numbers {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-content: center;
-        align-items: center;
-
-        li {
-          padding: 3px;
-
-          .page-numbers {
-            width: 40px;
-            height: 40px;
-            color: $mainColor;
-            font-size: 2.0rem;
-            text-align: center;
-            text-decoration: none;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            /*
-            display: inline-block;
-            padding: 0.4em 0.6em;
-            */
-            border: 2px solid $mainColor;
-            border-radius: 2px;
-            transition: all .2s ease-out;
-
-            &.dots,
-            &.current,
-            &:hover {
-              color: $baseColor;
-              background-color: $mainColor;
-              border-color: $mainColor !important;
-            }
-            
-            &.prev,
-            &.next {
-              &::after {
-                width: 8px;
-                height: 8px;
-                content: "";
-                border-top: 2px solid $mainColor;
-                display: block;
-              }
-              &:hover {
-                &::after {
-                  border-color: $baseColor !important;
-                }
-              }
-            }
-
-            &.prev {
-              margin-right: 15px;
-              &::after {
-                border-left: 2px solid $mainColor;
-                transform: rotate(-45deg);
-              }
-            }
-
-            &.next {
-              margin-left: 15px;
-              &::after {
-                border-right: 2px solid $mainColor;
-                transform: rotate(45deg);
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-
-  /* ======================
-  投稿詳細 ページャー（前へ・次へ・一覧に戻る）
-  ====================== */
-  &__pager {
-    @include makeContainer;
-    ul {
-      height: 40px;
-      position: relative;
-      @include screen {
-        max-width: 460px;
-        margin: 0 auto;
-      }
-
-      li {
+  /*====================================
+    コンポーネント
+  =====================================*/
+  &__mainvisual{
+    background-color: black;
+    position: relative;
+    &__wrap {
         position: absolute;
-        a {
-          @include makeButton;
-          min-height: 40px;
-          font-size: 1.6rem;
+        z-index: 2;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(#333, .35);
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+    }
+    &__content {
+        @include makeContainer($mx:1320px, $pd_pc:60px, $pd_tb:60px, $pd_sp:30px);
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 10px;
+        position: relative;
+        z-index: 4;
+  
+        i {
+            @include fontSize($fs_min: 60,$fs_max: 160);
+            font-weight: 700;
+            line-height: 1;
+            color: white;
         }
-        
-        &.prev,
-        &.next {
-          @include smartphone {
-            width: calc(64% / 2 - 10px);
-            margin-bottom: 20px;
-          }
-          @include screen {
-            width: 120px;
-          }
-
-          a {
-            &::before,
-            &::after {
-              width: 8px;
-              height: 8px;
-              content: "";
-              display: block;
-              transition: all .2s ease-out;
-              position: absolute;
-              top: 0;
-              bottom: 0;
-              margin: auto 0;
-            }
-
-            &:hover {
-              &::before,
-              &::after {
-                border-color: $mainColor;
-              }
-            }
-          }
+        h1,
+        h2 {
+            @include fontSize($fs_min: 24,$fs_max: 40);
+            font-weight: 700;
+            color: white;
         }
-
-        &.prev {
-          left: 0;
-          a {
-            &::before {
-              border-top: 2px solid $baseColor;
-              border-left: 2px solid $baseColor;
-              transform: rotate(-45deg);
-              left: 15px;
-            }
-          }
+  
+    }
+    &__background {
+      &--image{
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+        width: 100%;
+        padding-top: 400px;
+        @include smartphone {
+            padding-top: 240px;
         }
-
-        &.next {
-          right: 0;
-          a {
-            &::after {
-              border-top: 2px solid $baseColor;
-              border-right: 2px solid $baseColor;
-              transform: rotate(45deg);
-              right: 15px;
-            }
-          }
-        }
-
-        &.return {
-          left: 0;
-          right: 0;
-          margin: 0 auto;
-          @include smartphone {
-            width: 36%;
-          }
-          @include screen {
-            width: 200px;
-          }
-
+        img,video{
+            position: absolute;
+            z-index: -1;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            transform: translate(-50%, -50%);
         }
       }
     }
   }
 
-  /* ======================
-  スライダー
-  ====================== */
   &__slider{
     &__wrap{
       overflow: hidden;
@@ -269,7 +95,7 @@
         gap: 10px;
         text-decoration: none;
         @include trans;
-
+  
         figure {
           position: relative;
           overflow: hidden;
@@ -282,16 +108,16 @@
             @include trans;
           }
         }
-
+  
         h3{
           font-size: 1.6rem;
           font-weight: 700;
         }
-
+  
         time{
           font-size: 1.4rem;
         }
-
+  
         &:hover {
           img {
             transform: scale(1.2);
@@ -327,15 +153,55 @@
     .slick-disabled{
       opacity: 0.2;
     }
-
+  
   }
-  /* ======================
-  ボタン
-  ====================== */
+
+  /*====================================
+    ボタン
+  =====================================*/
   &__btn--large{
-    @include makeButton;
-    color: black;
-    background: url("#{$imgPath}/common/arrow_right.svg") no-repeat right 20px center white;
+    @include makeButton(
+      $font-size_pc: 20px,
+      $font-size_tb: 20px,
+      $font-size_sp: 14px
+    );
+    color: $mainColor!important;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    gap: .5em;
+    align-items: center;
+    span{
+      hyphens: auto;
+    }
+    .dli-mail {
+      display: inline-block;
+      vertical-align: middle;
+      color: $mainColor;
+      line-height: 1;
+      position: relative;
+      width: 1.06667em;
+      height: 0.8em;
+      border: 0.1em solid currentColor;
+      border-radius: 0.1em;
+      box-sizing: content-box;
+      overflow: hidden;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 0;
+        width: 0.75425em;
+        height: 0.75425em;
+        border: 0.1em solid currentColor;
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-radius: 0 0 0 0.1em;
+        box-sizing: content-box;
+        transform: translate(-50%, -50%) rotate(-45deg) skew(10deg, 10deg);
+      }
+    }
   }
 
   &__btn--medium{
@@ -348,11 +214,239 @@
       $font-size_tb: 16px,
       $font-size_sp: 14px,
     );
-    color: black;
-    background: url("#{$imgPath}/common/arrow_right.svg") no-repeat right 20px center white;
   }
+
+  /*====================================
+    共通
+  =====================================*/
+  // 見出し
+  &__heading1 {
+      @include lhCrop(1.4);
+      line-height: 1.4;
+      letter-spacing: 0.05em;
+      text-align: center;
+      @include smartphone {
+        font-size: 2.8rem;
+      }
+      @include screen {
+        font-size: 3.4rem;
+      }
+      span {
+        color: $mainColor;
+        display: block;
+        @include smartphone {
+          font-size: 1.6rem;
+          margin-top: 15px;
+        }
+        @include screen {
+          font-size: 1.8rem;
+          margin-top: 20px;
+        }
+      }
+  }
+
+  //　パンくず
+  &__breadcrumb {
+    @include makeContainer;
+    margin-bottom: 55px;
+    > span {
+      line-height: 1.6;
+      color: $fontColor;
+      font-size: 1.4rem;
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      margin: 0 auto;
+      
+      > span {
+        color: $fontColor;
+        margin-right: 0.5em;
+        &:nth-of-type(n+2) {
+          margin-left: 0.5em;
+        }
   
-  /*
-  EOF
-  */
+        a {
+          color: $fontColor;
+          text-decoration: none;
+          transition: all .2s ease-out;
+          &:hover{
+            color: $mainColor;
+          }
+        }
+      }
+    }
+  }
+
+  //　ページネーション
+  &__pagination {
+    @include makeContainer;
+    line-height: 1;
+    .pagination {
+      .page-numbers {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+  
+        li {
+          padding: 3px;
+  
+          .page-numbers {
+            width: 40px;
+            height: 40px;
+            color: $mainColor;
+            font-size: 2.0rem;
+            text-align: center;
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /*
+            display: inline-block;
+            padding: 0.4em 0.6em;
+            */
+            border: 2px solid $mainColor;
+            border-radius: 2px;
+            transition: all .2s ease-out;
+  
+            &.dots,
+            &.current,
+            &:hover {
+              color: $baseColor;
+              background-color: $mainColor;
+              border-color: $mainColor !important;
+            }
+            
+            &.prev,
+            &.next {
+              &::after {
+                width: 8px;
+                height: 8px;
+                content: "";
+                border-top: 2px solid $mainColor;
+                display: block;
+              }
+              &:hover {
+                &::after {
+                  border-color: $baseColor !important;
+                }
+              }
+            }
+  
+            &.prev {
+              margin-right: 15px;
+              &::after {
+                border-left: 2px solid $mainColor;
+                transform: rotate(-45deg);
+              }
+            }
+  
+            &.next {
+              margin-left: 15px;
+              &::after {
+                border-right: 2px solid $mainColor;
+                transform: rotate(45deg);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // ページャー
+  &__pager {
+    @include makeContainer;
+    ul {
+      height: 40px;
+      position: relative;
+      @include screen {
+        max-width: 460px;
+        margin: 0 auto;
+      }
+  
+      li {
+        position: absolute;
+        a {
+          @include makeButton;
+          min-height: 40px;
+          font-size: 1.6rem;
+        }
+        
+        &.prev,
+        &.next {
+          @include smartphone {
+            width: calc(64% / 2 - 10px);
+            margin-bottom: 20px;
+          }
+          @include screen {
+            width: 120px;
+          }
+  
+          a {
+            &::before,
+            &::after {
+              width: 8px;
+              height: 8px;
+              content: "";
+              display: block;
+              transition: all .2s ease-out;
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              margin: auto 0;
+            }
+  
+            &:hover {
+              &::before,
+              &::after {
+                border-color: $mainColor;
+              }
+            }
+          }
+        }
+  
+        &.prev {
+          left: 0;
+          a {
+            &::before {
+              border-top: 2px solid $baseColor;
+              border-left: 2px solid $baseColor;
+              transform: rotate(-45deg);
+              left: 15px;
+            }
+          }
+        }
+  
+        &.next {
+          right: 0;
+          a {
+            &::after {
+              border-top: 2px solid $baseColor;
+              border-right: 2px solid $baseColor;
+              transform: rotate(45deg);
+              right: 15px;
+            }
+          }
+        }
+  
+        &.return {
+          left: 0;
+          right: 0;
+          margin: 0 auto;
+          @include smartphone {
+            width: 36%;
+          }
+          @include screen {
+            width: 200px;
+          }
+  
+        }
+      }
+    }
+  }
+
 }

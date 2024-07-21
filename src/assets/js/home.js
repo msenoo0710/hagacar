@@ -4,26 +4,6 @@
 (function($){
     $(function(){
 
-
-        // ヘッダー背景
-        var headerCL = new ScrollMagic.Controller();
-        var scene = new ScrollMagic.Scene({
-            triggerElement: '.mainvisual', // トリガーとなる要素
-            duration: $('.mainvisual').outerHeight(), // .mainvisualの高さ
-            triggerHook: 0, // ページの上端でトリガー
-        })
-        .on('leave', function () {
-            // .headerに.currentクラスを追加
-            $('.header').addClass('current');
-        })
-        .on('enter', function () {
-            // .headerから.currentクラスを削除
-            $('.header').removeClass('current');
-        })
-        // コントローラーにシーンを追加
-        .addTo(headerCL);
-
-
         // カルーセル
         $('.mod__slider__carousel').slick(
             {

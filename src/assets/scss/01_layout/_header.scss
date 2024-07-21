@@ -29,8 +29,7 @@
   }
   &__logo,
   &__mobile-logo {
-    padding: 20px;
-
+    padding: 40px;
     @include smartphone {
       padding: 10px 15px;
     }
@@ -51,15 +50,19 @@
         white-space: nowrap;
         @include trans;
         span{
-          font-size: 2.0rem;
+          @include fontSize($fs_min: 18,$fs_max: 20);
           font-weight: 700;
           color: white;
+        }
+        &:hover{
+          opacity: 0.6;
+          transform: translateY(4px);
         }
       }
     }
   }
   &__content{
-    padding: 20px;
+    padding: 40px;
     @include smartphone {
       padding: 10px 15px;
     }
@@ -73,7 +76,6 @@
     @media (max-width: 1300px) {
       display: none;
     }
-
     &-list{
       display: flex;
       flex-wrap: nowrap;
@@ -92,18 +94,14 @@
           position: relative;
           @include trans;
           span{
+            @include fontSize($fs_min: 18,$fs_max: 20);
             color: white;
             font-weight: 700;
             list-style: 1;
-            &.en{
-              font-size: 2.0rem;
-            }
-            &.ja{
-              font-size: 1.4rem;
-            }
           }
           &:hover{
               opacity: 0.6;
+              transform: translateY(4px);
           }
         }
         ol{
@@ -135,6 +133,13 @@
     }
   }
   &__hamburger {
+    padding: 10px;
+    @include smartphone{
+      padding: 10px 0;
+    }
+    @media (min-width: 1300px) {
+      display: none;
+    }
     &-bars{
       cursor: pointer;
       position: relative;
@@ -154,7 +159,7 @@
           max-width: 74px;
           background-color: white;
           transform-origin: top;
-          @include trans($speed:0.3s);
+          @include trans;
           &:nth-of-type(1) {
             top:24px;
           }
@@ -186,59 +191,99 @@
     width: 100%;
     height: 100%;
     display: none;
-    background-color: $mainColor;
     position: fixed;
     z-index: 1100;
     top: 0;
-    left: 0;
+    right: 0;
     overflow-y: auto;
+    @include trans;
     &-wrap{
-      @include makeContainer($mx:100%, $pd_pc:20px, $pd_tb:20px, $pd_sp:10px 15px);
+      width: 100%;
       height: 100%;
-      gap: 60px;
-    }
-    &-logo{
-      padding: 0;
-    }
-    &-content{
+      background-color: rgba(#000,0.6);
       opacity: 0;
     }
+    &-content{
+      position: fixed;
+      z-index: 1200;
+      top: 0;
+      right: -100%;
+      opacity: 0;
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-start;
+      @include smartphone{
+        padding: 120px 30px 0;
+      }
+      @include screen{
+        padding: 140px 30px 0;
+      }
+      @include trans;
+    }
     &-nav{
+      position: relative;
+      &-close{
+        width: 46px;
+        height: 46px;
+        background-color: black;
+        border-radius: 50%;
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        cursor: pointer;
+        span{
+          display: inline-block;
+          position: absolute;
+          left: 13px;
+          height: 2px;
+          border-radius: 5px;
+          width: 100%;
+          max-width: 20px;
+          background-color: white;
+          transform-origin: top;
+          @include trans;
+          &:nth-of-type(1) {
+            top:23px;
+            transform: rotate(-45deg);
+          }
+          &:nth-of-type(2) {
+            top:23px;
+            transform: rotate(45deg);
+          }
+        }
+      }
       &-list{
+        width: 260px;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 40px;
-        padding: 100px;
-        @include smartphone{
-          padding: 100px 0;
-        }
+        gap: 10px;
+        padding: 40px;
+        border-radius: 2em;
+        border: 2px solid black;
+        background-color: white;
+        box-shadow: 0px 6px 0px 0px black;
       }
       &-item{
         >a{
-          display: flex;
-          flex-direction: column;
+          display: block;
           text-decoration: none;
-          text-align: center;
-          color: white;
+          color: $fontColor;
+          border-bottom: 2px dashed black;
+          padding: 10px;
           @include trans;
           &:link,
           &:visited{
             color: white;
           }
           &:hover{
-            border-color: $hoverColor;
-            span{
-              color: $hoverColor;
-            }
+            opacity: .35;
           }
         }
       }
       &-link{
-        color: white;
-        font-size: 2.8rem;
+        @include fontSize($fs_min: 18,$fs_max: 20);
         font-weight: 700;
+        color: $fontColor;
         line-height: 1;
       }
     }
@@ -253,10 +298,10 @@
         display: block;
       }
       a {
-        color: $mainColor;
+        color: black;
 
         span {
-          color: $mainColor;
+          color: black;
         }
       }
     }
@@ -273,13 +318,12 @@
           }
         }
       }
-
       .header__nav {
         a {
-          color: $mainColor;
+          color: black;
 
           span {
-            color: $mainColor;
+            color: black;
           }
         }
       }

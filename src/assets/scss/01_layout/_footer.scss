@@ -6,6 +6,197 @@
 /////////////////////////////////////////// */
 .footer{
   background-color: white;
+  &__contactusfix{
+    position: fixed;
+    z-index: 1300;
+    @include smartphone{
+      width: 100%;
+      left: 0;
+      bottom: 0;
+    }
+    @include screen{
+      right: 40px;
+      bottom: 100px;
+    }
+    &-wrap{
+      @include smartphone{
+        ul{
+          width: 100%;
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          li{
+            a{
+              color: white;
+              width: 100%;
+              display: flex;
+              flex-direction: column;
+              gap: 5px;
+              justify-content: center;
+              align-items: center;
+              text-decoration: none;
+              background-color: black;
+              padding: 10px;
+              i{
+                max-width: 30px;
+              }
+              span{
+                font-size: 1.6rem;
+                font-weight: 700;
+              }
+            }
+            &.phone{
+              a{
+                background-color: #244783;
+              }
+            }
+            &.mail{
+              a{
+                background-color: #ee7800;
+              }
+            }
+            &.line{
+              a{
+                background-color: #00b900;
+              }
+            }
+          }
+        }
+      }
+      @include screen{
+        ul{
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          li{
+            a{
+              color: white;
+              width: 80px;
+              height: 80px;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              text-decoration: none;
+              background-color: black;
+              border-radius: 50%;
+              i{
+                max-width: 40px;
+              }
+              span{
+                font-size: 1.4rem;
+                font-weight: 700;
+              }
+              @include trans;
+              &:hover{
+                opacity: 0.6;
+                transform: translateY(4px);
+              }
+            }
+            &.line{
+              a{
+                background-color: #00b900;
+                span{
+                  display: none;
+                }
+              }
+            }
+            &.phone{
+                display: none;
+            }
+            &.mail{
+              a{
+                background-color: #ee7800;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  &__contactus{
+    background-color: $mainColor;
+    color: white;
+    &-wrap{
+      @include makeContainer($mx:1520px, $pd_pc:80px 60px, $pd_tb:80px 60px, $pd_sp:60px 20px);
+      display: grid;
+      @include smartphone{
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+      }
+      @include screen{
+        grid-template-columns: auto 1fr;
+        gap: 100px;
+      }
+    }
+    &-heading{
+      display: flex;
+      flex-direction: column;
+      i {
+        @include fontSize($fs_min: 40,$fs_max: 60);
+        font-weight: 700;
+        line-height: 1.2;
+        white-space: nowrap;
+      }
+
+      h2 {
+        @include fontSize($fs_min: 24,$fs_max: 40);
+        font-weight: 700;
+        white-space: nowrap;
+      }
+    }
+    &-content{
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      @include smartphone{
+        gap: 20px;
+        justify-content: center;
+      }
+      @include screen{
+        gap: 40px;
+        justify-content:space-between;
+      }
+      &--description{
+        p{
+          @include fontSize($fs_min: 16,$fs_max: 24);
+          font-weight: 500;
+          hyphens: auto;
+        }
+      }
+      &--us{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      &--phone{
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        i{
+          @include fontSize($fs_min: 18,$fs_max: 24);
+          font-weight: 700;
+          line-height: 1;
+          white-space: nowrap;
+        }
+        a{
+          @include fontSize($fs_min: 40,$fs_max: 50);
+          color: white!important;
+          font-weight: 700;
+          text-decoration: none;
+          line-height: 1;
+          white-space: nowrap;
+          @include trans;
+          @include screen{
+            pointer-events: none;
+          }
+          &:hover{
+            opacity: .6;
+          }
+        }
+      }
+    }
+  }
   &__pagetop{
     opacity: 0;
     visibility: hidden;
@@ -78,7 +269,7 @@
       span{
         font-size: 2rem;
         font-weight: 700;
-        color: $mainColor;
+        color: black;
       }
     }
   }
@@ -93,14 +284,16 @@
   &__address,
   &__phone {
     p {
-      font-size: 1.4rem;
+      @include fontSize($fs_min: 14,$fs_max: 16);
       font-weight: 500;
     }
   }
   &__copyright{
     display: flex;
     @include smartphone{
-      justify-content: center;
+      justify-content: right;
+      padding-bottom: 90px;
+      padding-top: 20px;
     }
     @include screen{
       grid-area: 1 / 2 / 3 / 3;

@@ -8,9 +8,9 @@
 /*====================================
   カラー
 =====================================*/
-$color1:#00008b; //青
+$color1:#1393c5; //青
 $color2:#FFF; //白
-$color3:#333; //黒
+$color3:#111; //黒
 $color4: #F4F4F4; //薄いグレー
 $color5: #E6E6E6; //グレー
 $color6: #AAAAAA; //グレー
@@ -22,6 +22,13 @@ $bgColor:$color4; //薄いグレー
 $borderColor:$color5; //グレー
 $hoverColor:$color6; //グレー
 
+$Corporate1:#666666;
+$Accent:#00529F;
+$Text_black:#333333;
+$Text_hover:#AAAAAA;
+$BgColor:#F4F4F4;
+$RichBlack:#000000;
+$Gray:#333333;
 
 /*====================================
   画像パス
@@ -34,6 +41,7 @@ $imgPath:'../images';
 =====================================*/
 $baseFont: "Noto Sans JP", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ", "Meiryo","ＭＳ Ｐゴシック", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 $serif: "Noto Serif JP", "Hiragino Mincho ProN W3", "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "游明朝", YuMincho, "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif;
+$zenmaru: "Zen Maru Gothic", serif;
 
 //行間
 $pclh:1.5;
