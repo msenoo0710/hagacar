@@ -216,6 +216,21 @@
     );
   }
 
+  &__button--send{
+    @include makeButton(
+      $mx: 400px,
+      $font-size_pc: 20px,
+      $font-size_tb: 20px,
+      $font-size_sp: 14px
+    );
+    width: 100%;
+    color: white;
+    background-color: $mainColor;
+    border: none;
+    cursor: pointer;
+  }
+
+
   /*====================================
     共通
   =====================================*/

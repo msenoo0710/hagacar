@@ -17,19 +17,11 @@
     &__wrap{
       display: flex;
       flex-direction: column;
-      gap: 60px;
+      gap: 40px;
     }
     &__heading{
       display: flex;
       flex-direction: column;
-
-      i {
-        @include fontSize($fs_min: 40,$fs_max: 160);
-        font-weight: 700;
-        line-height: 1;
-        color: $mainColor;
-      }
-
       h2 {
         @include fontSize($fs_min: 24,$fs_max: 40);
         font-weight: 700;
@@ -53,44 +45,25 @@
         dt,dd{
             border-bottom: 1px solid #333;
             padding: 20px;
-            &:nth-of-type(1){
-                padding: 0 0 20px;
-            }
         }
         dt{
-            padding-left: 0;
-            @include smartphone {
-                font-weight: 700;
-                border: none;
-                padding: 15px 0 0;
-                &:first-child{
-                    padding: 0;
-                }
-            }
-            i{
-                font-family: $robotoCondensed;
-                @include fontSize($fs_min:40, $fs_max:80);
-                font-weight: 700;
-                line-height: 1.2;
-            }
+          font-weight: 700;
+          padding-left: 0;
+          @include smartphone {
+              border: none;
+              padding: 15px 0 0;
+              &:first-child{
+                  padding: 0;
+              }
+          }
         }
         dd{
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 10px;
             @include smartphone {
                 gap: 10px;
                 padding: 0 0 15px;
-            }
-            i{
-                @include fontSize($fs_min:20, $fs_max:40);
-                line-height: 1.2;
-                letter-spacing: -0.04em;
-                font-weight: 700;
-
-                @include smartphone {
-                    line-height: 1.2;
-                }
             }
             h2 {
                 @include fontSize($fs_min:16, $fs_max:20);

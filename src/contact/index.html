@@ -101,8 +101,55 @@
                     <div class="mailform__heading js-fadeUp">
                         <p>気仙沼市本吉町の自動車整備工場です。車検・整備・板金塗装・修理などお気軽にご相談ください</p>
                     </div>
+                    <div class="mailform__phone">
+                        <h2>お電話のお問い合わせ</h2>
+                        <a href="tel:0226423025">
+                            <span>0226-42-3025</span>
+                        </a>
+                        <p>受付時間　9:00～17:30</p>
+                    </div>
                     <div class="mailform__content">
-                        <p>コンテンツが入ります</p>
+                        <h2>お問い合わせフォーム</h2>
+                        <p>必要事項を記入し、送信確認ボタンを押してください。<br>
+                            内容によっては返答に時間がかかる場合や、返答できない場合がありますのでご了承ください。</p>
+                        <dl>
+                            <dt>お名前<span class="required">必須</span></dt>
+                            <dd>
+                                <input type="text" name="name" id="name" class="form-control" size="60" value="" placeholder="山田　太郎">
+                            </dd>
+                            <dt>ふりがな<span class="required">必須</span></dt>
+                            <dd>
+                                <input type="text" name="kana" id="kana" class="form-control" size="60" value="" placeholder="やまだ　たろう">
+                            </dd>
+                            <dt>メールアドレス<span class="required">必須</span></dt>
+                            <dd>
+                                <input type="email" name="email" id="email" class="form-control" size="60" value="" placeholder="メールアドレス" data-conv-half-alphanumeric="true">
+                            </dd>
+                            <dt>電話番号</dt>
+                            <dd>
+                                <input type="tel" name="phone" id="phone" class="form-control" size="60" value="" placeholder="電話番号" data-conv-half-alphanumeric="true">
+                            </dd>
+                            <dt>お問い合わせ内容<span class="required">必須</span></dt>
+                            <dd>
+                                <textarea name="message" id="message" class="form-control" cols="50" rows="8"></textarea>
+                            </dd>
+                        </dl>
+                        <div class="mailform__policy--agree">
+                            <span class="mwform-checkbox-field">
+                                <label for="privacy-1">
+                                    <span class="mwform-checkbox-field horizontal-item">
+                                        <label for="privacy-1">
+                                            <input type="checkbox" name="privacy[data][]" value="プライバシーポリシーについて同意する" id="privacy-1">
+                                            <span class="mwform-checkbox-field-text">プライバシーポリシーについて同意する</span>
+                                        </label>
+                                    </span>
+                                </label>
+                                <p><a href="../privacy-policy/">プライバシーポリシー</a>に同意する</p>
+                            </span>
+                        </div>
+                        <div id="submit" class="mailform__submit">
+                            <input type="submit" name="submitConfirm" value="確認画面へ" class="mod__button--send" disabled="">
+                        </div>
                     </div>
                 </div>
             </section>
@@ -117,33 +164,6 @@
                     <li class="mail"><a href="../contact/"><i><img src="../assets/images/common/icon-email_w.svg" width="100" height="100" alt=""></i><span>メール</span></a></li>
                     <li class="line"><a href="https://page.line.me/041cngnr" target="_blank"><i><img src="../assets/images/common/icon-line_w.svg" width="100" height="100" alt=""></i><span>LINE</span></a></li>
                 </ul>
-            </div>
-        </div>
-        <div class="footer__contactus js-fadeUp">
-            <div class="footer__contactus-wrap">
-                <div class="footer__contactus-heading">
-                    <i>CONTACT US</i>
-                    <h2>お問い合わせ</h2>
-                </div>
-                <div class="footer__contactus-content">
-                    <div class="footer__contactus-content--description">
-                        <p>気仙沼市本吉町の自動車整備工場です。</p>
-                        <p>車検・整備・板金塗装・修理など<br>お気軽にご相談ください</p>
-                    </div>
-                    <div class="footer__contactus-content--us">
-                        <div class="footer__contactus-content--mail">
-                            <a class="mod__btn--large" href="../contact/">
-                                <span class="dli-mail"></span>
-                                <span>お問い合わせフォームはこちら</span>
-                            </a>
-                        </div>
-                        <div class="footer__contactus-content--phone">
-                            <i>お電話のお問い合わせ</i>
-                            <a href="tel:0226423025">0226-42-3025</a>
-                            <p>平日9:00～18:00</p>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
         <div class="footer__wrap">
