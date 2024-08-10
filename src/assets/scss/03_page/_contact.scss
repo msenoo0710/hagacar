@@ -199,6 +199,11 @@
               p{
                   @include fontSize($fs_min:16, $fs_max:20);
                   font-weight: 500;
+                  br{
+                    @include screen{
+                        display: none;
+                    }
+                  }
               }
           }
       }
