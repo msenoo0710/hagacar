@@ -74,13 +74,16 @@
       display: flex;
       flex-direction: column;
       gap: 40px;
+      @include smartphone{
+        gap: 20px;
+      }
     }
     &__heading{
       display: flex;
       flex-direction: column;
 
       i {
-        @include fontSize($fs_min: 40,$fs_max: 160);
+        @include fontSize($fs_min: 40,$fs_max: 120);
         font-weight: 700;
         line-height: 1;
         color: $mainColor;
@@ -93,75 +96,73 @@
       }
     }
     &__content{
-      &--list{
-        counter-reset: item;
-        display: flex;
-        flex-direction: column;
-        gap: 40px;
-        li{
-          counter-increment: item;
-          background-color: #eaf7fd;
-          border-radius: 2em;
-          a{
-            display: grid;
-            grid-template-columns: 40% auto;
-            align-items: start;
-            padding: 40px 60px;
-            gap: 20px;
-            @media(max-width:1000px){
-              grid-template-columns: 1fr;
-              padding: 20px;
-              gap: 10px;
-            }
-            text-decoration: none;
-            >div{
-              display: flex;
-              flex-direction: column;
-              gap: 20px;
-            }
-            @include trans;
-            &:hover{
-              opacity: 0.8;
-            }
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 40px;
+      @include smartphone{
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      &--link{
+        a{
+          padding: 40px 40px 60px;
+          display: block;
+          background-color: white;
+          border-radius: 1em;
+          position: relative;
+          border: 2px solid black;
+          @include trans;
+          &:hover{
+            opacity: 0.6;
           }
           figre{
             img{
-              border-radius: 2em;
-              width: 100%;
-              height: 100%;
-              aspect-ratio: 3 / 2;
-              object-fit: cover;
+              margin-inline: auto;
             }
           }
-          
-          h3{
-            @include fontSize($fs_min: 24,$fs_max: 40);
-            font-weight: 700;
-            color: $mainColor;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            &::before{
-              content: counter(item, decimal-leading-zero);
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              width: 60px;
-              height: 60px;
-              color: white;
-              border-radius: 50%;
-              background-color: $mainColor;
+          .dli-external-link {
+            display: inline-block;
+            vertical-align: middle;
+            color: black;
+            line-height: 1;
+            width: 0.9em;
+            height: 0.9em;
+            border: 0.2em solid currentColor;
+            border-radius: 0.2em;
+            background: #fff;
+            box-sizing: content-box;
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            span {
+              position: absolute;
+              top: -0.2em;
+              right: -0.2em;
+              width: 45%;
+              height: 45%;
+              border: 0.2em solid currentColor;
+              border-bottom: 0;
+              border-left: 0;
+              background: #fff;
+              box-shadow: -0.1em 0.1em 0 0.1em #fff;
+              box-sizing: border-box;
+              &::before {
+                content: '';
+                position: absolute;
+                top: -0.05em;
+                right: -0.1em;
+                width: 0.1em;
+                height: 0.9em;
+                background: currentColor;
+                transform: rotate(45deg);
+                transform-origin: top center;
+              }
             }
           }
-          p{
-            @include fontSize($fs_min: 16,$fs_max: 20);
-            font-weight: 700;
-          }
-          .more{
-            span{
-              color: white!important;
-              background-color: $mainColor;
-            }
+        }
+        &.sales{
+          img{
+            max-width: 200px;
           }
         }
       }

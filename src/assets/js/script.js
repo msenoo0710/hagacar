@@ -141,8 +141,8 @@
           $("html, body").velocity("scroll", {
               duration: 800,
               // ヘッダーの高さを考慮したオフセット値
-              // offset: target.offset().top - headerHeight,
-              offset: target.offset().top,
+              offset: target.offset().top - headerHeight,
+              // offset: target.offset().top,
               easing: "ease-in-out",
               complete: function() {
                   var $header = $(".header");

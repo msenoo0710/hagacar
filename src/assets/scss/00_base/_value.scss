@@ -49,10 +49,10 @@ $splh:1.4;
 
 //可変フォントサイズ
 @mixin fontSize(
-    $fs_min: 14,
+    $fs_min: 16,
     $width_small: 576,//576
     $width_large: 1300,//992
-    $fs_max: 16
+    $fs_max: 18
 ) {
     $preferred_vw_base: math.div(($fs_max - $fs_min), ($width_large - $width_small));
     $preferred_vw: $preferred_vw_base * 100;

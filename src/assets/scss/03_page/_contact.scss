@@ -39,8 +39,12 @@
       display: flex;
       flex-direction: column;
       gap: 30px;
+      @include smartphone{
+        padding: 20px;
+        border-radius: 1em;
+      }
       h2{
-          @include fontSize($fs_min:32, $fs_max:40);
+          @include fontSize($fs_min:24, $fs_max:40);
           color: $mainColor;
           font-weight: 700;
           line-height: 1.2;
@@ -72,8 +76,12 @@
       display: flex;
       flex-direction: column;
       gap: 40px;
+      @include smartphone{
+        padding: 20px;
+        border-radius: 1em;
+      }
       h2{
-          @include fontSize($fs_min:32, $fs_max:40);
+          @include fontSize($fs_min:24, $fs_max:40);
           color: $mainColor;
           font-weight: 700;
           line-height: 1.2;

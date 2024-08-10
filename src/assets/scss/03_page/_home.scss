@@ -84,7 +84,7 @@
       }
 
       i {
-        @include fontSize($fs_min: 40,$fs_max: 160);
+        @include fontSize($fs_min: 40,$fs_max: 120);
         font-weight: 700;
         line-height: 1;
         color: $mainColor;
@@ -106,6 +106,9 @@
           counter-increment: item;
           background-color: #eaf7fd;
           border-radius: 2em;
+          @include smartphone{
+            border-radius: 1em;
+          }
           a{
             display: grid;
             grid-template-columns: 40% auto;

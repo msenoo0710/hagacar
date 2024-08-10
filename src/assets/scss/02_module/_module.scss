@@ -36,7 +36,7 @@
         z-index: 4;
   
         i {
-            @include fontSize($fs_min: 60,$fs_max: 160);
+            @include fontSize($fs_min: 40,$fs_max: 120);
             font-weight: 700;
             line-height: 1;
             color: white;

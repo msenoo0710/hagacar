@@ -4,36 +4,31 @@
   layout.scss
   全体のレイアウトに関する記述
 /////////////////////////////////////////// */
-* {
-  -webkit-box-sizing: border-box;
+/* 全体のリセットとボックスモデルの設定 */
+*, html, body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
-html,body{
-  scroll-padding-top: 140px;
-  @include smartphone{
+
+/* HTMLスタイル */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 180px;
+  word-wrap: break-word;
+  font-size: 62.5%;
+  @include smartphone {
     scroll-padding-top: 70px;
   }
 }
-html {
-  scroll-behavior: smooth;
-  word-wrap: break-word;
-  font-size: 62.5%;
-  margin: 0;
-  padding: 0;
-}
-body{
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
+
+/* ボディスタイル */
+body {
   font-family: $zenmaru;
   color: $fontColor;
   background-color: white;
   font-weight: 400;
   -webkit-text-size-adjust: 100%;
-  scroll-behavior: smooth;
   @include fontSize;
   @include smartphone {
     line-height: $splh;
@@ -43,11 +38,13 @@ body{
   }
 }
 
+/* 見出し、リスト、テーブル、パラグラフのリセット */
 h1, h2, h3, h4, h5, h6,
 table, tr, td, th,
 ol, ul, li,
 dl, dt, dd,
-p {
+p,
+figure {
   margin: 0;
   padding: 0;
   font-style: normal;
@@ -56,58 +53,90 @@ p {
   list-style: none;
 }
 
-i, em { font-style: normal; }
+/* イタリックとエム要素のスタイル */
+i, em {
+  font-style: normal;
+}
 
+/* 画像スタイル */
 img {
   display: block;
   border: none;
-  margin: 0;
-  padding: 0;
   width: auto;
-  max-width:100%;
+  max-width: 100%;
   height: auto;
   image-rendering: -webkit-optimize-contrast;
 }
 
-figure{
-  margin: 0;
-}
-a, *:focus { outline: none; }
-
-*::selection { background: $mainColor; color: #FFF; }
-*::-moz-selection { background: $mainColor; color: #FFF; }
-
-.hide { display: none !important; }
-.hideSP { @include smartphone { display: none !important; } }
-.hideTL { @include tablet { display:none !important; } }
-.hideDT { @include desktop { display:none !important; } }
-.hidePC { @include screen { display: none !important; } }
-
+/* アンカーリンクとフォーカススタイル */
 a {
   outline: none;
-  *:focus{
-    outline: 0;
+
+  &:link,
+  &:visited,
+  &:hover,
+  &:active {
+    color: $fontColor;
   }
-  &:link { color:$fontColor; }
-  &:visited { color:$fontColor; }
+
   &:hover {
-    color:$fontColor;
     text-decoration: none;
   }
-  &:active { color:$fontColor; }
 }
 
+a, *:focus {
+  outline: none;
+}
+
+/* 選択テキストのスタイル */
+*::selection,
+*::-moz-selection {
+  background: $mainColor;
+  color: #FFF;
+}
+
+/* 非表示クラス */
+.hide {
+  display: none !important;
+}
+
+.hideSP {
+  @include smartphone {
+    display: none !important;
+  }
+}
+
+.hideTL {
+  @include tablet {
+    display: none !important;
+  }
+}
+
+.hideDT {
+  @include desktop {
+    display: none !important;
+  }
+}
+
+.hidePC {
+  @include screen {
+    display: none !important;
+  }
+}
+
+/* reCAPTCHA バッジのスタイル */
 .grecaptcha-badge {
   visibility: hidden;
 }
 
+/* アニメーションクラス */
 .js-fadeUp {
   opacity: 0;
   transform: translateY(50px);
   transition: opacity 0.5s, transform 1s;
 }
-.js-fadeIn{
+
+.js-fadeIn {
   opacity: 0;
   transition: opacity 1s ease-in-out;
 }
-
