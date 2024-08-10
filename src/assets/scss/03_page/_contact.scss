@@ -89,7 +89,6 @@
           line-height: 1.2;
       }
       p{
-          @include fontSize($fs_min:14, $fs_max:16);
           font-weight: 500;
       }
       dl{
