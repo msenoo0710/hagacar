@@ -103,6 +103,10 @@
         grid-template-columns: 1fr;
         gap: 20px;
       }
+      p{
+        @include fontSize($fs_min: 16,$fs_max: 20);
+        font-weight: 500;
+      }
       &--link{
         a{
           padding: 40px 40px 60px;
