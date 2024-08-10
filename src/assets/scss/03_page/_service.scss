@@ -14,7 +14,7 @@
   }
   .intro{
     &__wrap{
-      @include makeContainer($mx:1320px, $pd_pc:60px, $pd_tb:60px, $pd_sp:30px);
+      @include makeContainer($mx:1320px, $pd_pc:80px 60px 0, $pd_tb:80px 60px 0, $pd_sp:60px 20px 0);
     }
     &__nav{
       ul{
@@ -66,21 +66,20 @@
     }
   }
   .service{
-    @include makeContainer($mx:1320px, $pd_pc:0 60px, $pd_tb:0 60px, $pd_sp:0 20px);
+    @include makeContainer($mx:1320px, $pd_pc:80px 60px, $pd_tb:80px 60px, $pd_sp:60px 20px);
     &__wrap{
-      @include makeContainer($mx:1320px, $pd_pc:80px 60px, $pd_tb:80px 60px, $pd_sp:60px 20px);
-      background-color: #eaf7fd;
-      border-radius: 2em;
       display: flex;
       flex-direction: column;
-      gap: 40px;
-      @include smartphone{
-        gap: 20px;
-      }
+      gap: 60px;
     }
     &__heading{
       display: flex;
       flex-direction: column;
+      gap: 10px;
+      padding: 0 60px;
+      @media(max-width:1000px){
+        padding: 0;
+      }
 
       i {
         @include fontSize($fs_min: 40,$fs_max: 120);
@@ -96,16 +95,68 @@
       }
     }
     &__content{
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 40px;
-      @include smartphone{
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
-      p{
-        @include fontSize($fs_min: 16,$fs_max: 20);
-        font-weight: 500;
+      &--list{
+        counter-reset: item;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        li{
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          align-items: start;
+          padding: 40px 60px;
+          gap: 20px;
+          counter-increment: item;
+          background-color: #eaf7fd;
+          border-radius: 2em;
+          @include smartphone{
+            border-radius: 1em;
+            grid-template-columns: 1fr;
+            padding: 20px;
+            gap: 10px;
+          }
+          >figre{
+            img{
+              border-radius: 1em;
+              width: 100%;
+              height: 100%;
+              aspect-ratio: 3 / 2;
+              object-fit: cover;
+            }
+          }
+          >div{
+            @include flex-gap(20px, 10px, $direction: column);
+            h3{
+              @include fontSize($fs_min: 24,$fs_max: 40);
+              font-weight: 700;
+              color: $mainColor;
+              display: flex;
+              align-items: center;
+              gap: 10px;
+              &::before{
+                content: counter(item, decimal-leading-zero);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 60px;
+                height: 60px;
+                color: white;
+                border-radius: 50%;
+                background-color: $mainColor;
+              }
+            }
+            p{
+              @include fontSize($fs_min: 16,$fs_max: 20);
+              font-weight: 500;
+            }
+            .more{
+              span{
+                color: white!important;
+                background-color: $mainColor;
+              }
+            }
+          }
+        }
       }
       &--link{
         a{
@@ -166,7 +217,7 @@
         }
         &.sales{
           img{
-            max-width: 200px;
+            max-width: 300px;
           }
         }
       }
