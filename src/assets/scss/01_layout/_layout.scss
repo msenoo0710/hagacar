@@ -27,7 +27,7 @@ body {
   font-family: $zenmaru;
   color: $fontColor;
   background-color: white;
-  font-weight: 400;
+  font-weight: 500;
   -webkit-text-size-adjust: 100%;
   @include fontSize;
   @include smartphone {
@@ -51,6 +51,7 @@ figure {
   font-weight: normal;
   font-size: 100%;
   list-style: none;
+  font-weight: 500;
 }
 
 /* イタリックとエム要素のスタイル */

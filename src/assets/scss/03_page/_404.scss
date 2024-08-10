@@ -1,0 +1,20 @@
+@charset "utf-8";
+@import "../00_base/value";
+/* /////////////////////////////////////////////////////////
+  404エラー
+///////////////////////////////////////////////////////// */
+
+.page--error404 {
+    .intro{
+        &__wrap{
+            @include makeContainer($mx:1120px, $pd_pc:80px 60px, $pd_tb:80px 60px, $pd_sp:60px 20px);
+            @include flex-gap(40px, 20px, $direction: column);
+        }
+        &__content{
+            @include flex-gap(40px, 20px, $direction: column);
+            p{
+                line-height: 2;
+            }
+        }
+    }
+}

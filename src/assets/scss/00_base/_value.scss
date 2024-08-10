@@ -8,27 +8,35 @@
 /*====================================
   カラー
 =====================================*/
-$color1:#1393c5; //青
-$color2:#FFF; //白
-$color3:#111; //黒
-$color4: #F4F4F4; //薄いグレー
-$color5: #E6E6E6; //グレー
-$color6: #AAAAAA; //グレー
+$blue: #1393c5; // ブルー（青）
+$white: #FFFFFF; // ホワイト（白）
+$black: #1A1A1C; // ブラック（黒）
+$light-gray: #f6f7fb; // ライトグレー（淡い灰色）
+$gray: #E6E6E6; // グレー（灰色）
+$medium-gray: #AAAAAA; // ライトグレー（薄い灰色）
+$light-sky-blue: #F4F4F4; // ライトスカイブルー（淡い空色）
+$light-blue: #84b2ca; // ライトブルー（淡い青）
+$sky-blue: #4EC5FB; // スカイブルー（空色）
+$black-dark: #000000; // ブラック（黒）
+$dark-gray: #333333; // ダークグレー（濃い灰色）
+$pastel-blue: #D7F0FC; // パステルブルー（淡い青）
+$light-gray-alt: #D9D9D9; // ライトグレーオルト（代替淡い灰色）
 
-$mainColor:$color1; //青
-$baseColor:$color2; //白
-$fontColor:$color3; //黒
-$bgColor:$color4; //薄いグレー
-$borderColor:$color5; //グレー
-$hoverColor:$color6; //グレー
+$mainColor: $blue;
+$mainLightColor: $sky-blue;
+$mainBgColor: $light-sky-blue;
+$baseColor: $white;
+$fontColor: $black;
+$bgColor: $light-gray;
+$borderColor: $gray;
+$hoverColor: $medium-gray;
 
-$Corporate1:#666666;
-$Accent:#00529F;
-$Text_black:#333333;
-$Text_hover:#AAAAAA;
-$BgColor:#F4F4F4;
-$RichBlack:#000000;
-$Gray:#333333;
+$Corporate1: $blue;
+$TextHover: $medium-gray;
+$BgColor: $light-sky-blue;
+$RichBlack: $black-dark;
+$Gray: $dark-gray;
+
 
 /*====================================
   画像パス

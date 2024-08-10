@@ -228,6 +228,11 @@
     background-color: $mainColor;
     border: none;
     cursor: pointer;
+    &:disabled{
+      color: $medium-gray;
+      border-color: $bgColor;
+      background-color: $bgColor;
+    }
   }
 
 

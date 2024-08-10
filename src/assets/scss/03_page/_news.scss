@@ -1,0 +1,65 @@
+@charset "utf-8";
+@import "../00_base/value";
+/* /////////////////////////////////////////////////////////
+    お知らせ
+///////////////////////////////////////////////////////// */
+
+.page--news {
+    .articles{
+      background-color: $pastel-blue;
+      &__wrap{
+          @include makeContainer($mx:1120px, $pd_pc:80px 60px, $pd_tb:80px 60px, $pd_sp:60px 20px);
+          @include flex-gap(20px, 10px, $direction: column);
+      }
+      .article{
+        background-color: white;
+        &__wrap{
+          a{
+            display: block;
+            padding: 34px;
+            text-decoration: none;
+            @include trans;
+            @include smartphone{
+              padding: 20px;
+            }
+            &:hover{
+              opacity: 0.6;
+            }
+          }
+        }
+        &__content{
+          @include flex-gap(40px, 5px, $direction: row);
+          @include smartphone{
+            flex-direction: column;
+          }
+          time{
+            font-size: 1.6rem;
+          }
+          h3{
+            font-size: 1.6rem;
+          }
+        }
+      }
+    }
+    .single{
+        &__wrap{
+            @include makeContainer($mx:1120px, $pd_pc:80px 60px, $pd_tb:80px 60px, $pd_sp:60px 20px);
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+        }
+        &__heading{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            h1{
+                @include fontSize($fs_min:32, $fs_max:40);
+                font-weight: 700;
+                line-height: 1.2;
+            }
+            time{
+                @include fontSize($fs_min:14, $fs_max:16);
+            }
+        }
+    }
+}

@@ -42,6 +42,7 @@
       @include smartphone{
         padding: 20px;
         border-radius: 1em;
+        gap: 20px;
       }
       h2{
           @include fontSize($fs_min:24, $fs_max:40);
@@ -79,6 +80,7 @@
       @include smartphone{
         padding: 20px;
         border-radius: 1em;
+        gap: 20px;
       }
       h2{
           @include fontSize($fs_min:24, $fs_max:40);

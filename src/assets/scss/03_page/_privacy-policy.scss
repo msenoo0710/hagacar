@@ -1,0 +1,40 @@
+@charset "utf-8";
+@import "../00_base/value";
+/* /////////////////////////////////////////////////////////
+    プライバシーポリシー
+///////////////////////////////////////////////////////// */
+
+.page--privacy-policy {
+    .privacy-policy {
+        @include makeContainer($mx:1120px, $pd_pc:80px 60px, $pd_tb:80px 60px, $pd_sp:60px 20px);
+        &__wrap{
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+        }
+        &__content{
+            @include flex-gap(60px, 40px, $direction: column);
+            >div{
+                @include flex-gap(40px, 20px, $direction: column);
+            }
+            h2{
+                @include fontSize($fs_min: 24,$fs_max: 40);
+                font-weight: 700;
+                color: $mainColor;
+            }
+            p{
+                font-weight: 500;
+            }
+            ol {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                >li {
+                    list-style-type: decimal;
+                    margin-left: 1.5em;
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+}
