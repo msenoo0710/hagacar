@@ -230,8 +230,9 @@
     cursor: pointer;
     &:disabled{
       color: $medium-gray;
-      border-color: $bgColor;
-      background-color: $bgColor;
+      border-color: $gray;
+      background-color: $gray;
+      pointer-events: none;
     }
   }
 
