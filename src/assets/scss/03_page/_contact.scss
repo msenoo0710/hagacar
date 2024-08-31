@@ -34,7 +34,7 @@
     }
   &__phone{
       padding: 40px;
-      background-color: #eaf7fd;
+      background-color: $light-gray;
       border-radius: 2em;
       display: flex;
       flex-direction: column;
@@ -72,7 +72,7 @@
   }
   &__content{
       padding: 40px;
-      background-color: #eaf7fd;
+      background-color: $light-gray;
       border-radius: 2em;
       display: flex;
       flex-direction: column;

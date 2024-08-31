@@ -6,7 +6,7 @@
 
 .page--news {
     .articles{
-      background-color: $pastel-blue;
+      background-color: $light-gray;
       &__wrap{
           @include makeContainer($mx:1120px, $pd_pc:80px 60px, $pd_tb:80px 60px, $pd_sp:60px 20px);
           @include flex-gap(20px, 10px, $direction: column);
