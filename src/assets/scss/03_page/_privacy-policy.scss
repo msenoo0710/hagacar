@@ -20,7 +20,14 @@
             h2{
                 @include fontSize($fs_min: 24,$fs_max: 40);
                 font-weight: 700;
-                color: $mainColor;
+                color: white;
+                border-radius: 0.3em;
+                background-color: $mainColor;
+                padding: 0.3em;
+            }
+            h3{
+                @include fontSize($fs_min: 16,$fs_max: 20);
+                font-weight: 700;
             }
             p{
                 font-weight: 500;
@@ -33,6 +40,21 @@
                     list-style-type: decimal;
                     margin-left: 1.5em;
                     font-weight: 500;
+                }
+            }
+            dl{
+                @include flex-gap(10px, 10px, $direction: column);
+                dt{
+                    @include fontSize($fs_min: 18,$fs_max: 24);
+                    font-weight: 700;
+                    color: $mainColor;
+                }
+                dd{
+                    @include flex-gap(20px, 10px, $direction: column);
+                    >div{
+                        @include flex-gap(10px, 10px, $direction: column);
+                        padding-left: 2em;
+                    }
                 }
             }
         }

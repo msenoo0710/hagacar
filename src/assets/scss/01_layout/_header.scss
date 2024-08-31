@@ -30,12 +30,6 @@
 
     &-mark {
       max-width: 74px;
-      &--white{
-        display: block;
-      }
-      &--default{
-        display: none;
-      }
       a{
         display: flex;
         flex-wrap: nowrap;
@@ -283,18 +277,11 @@
   }
   &.current {
     .header__logo-mark {
-      .header__logo-mark--white {
-        display: none;
-      }
-
-      .header__logo-mark--default {
-        display: block;
-      }
       a {
-        color: $mainColor;
+        color: $fontColor;
 
         span {
-          color: $mainColor;
+          color: $fontColor;
         }
       }
     }
