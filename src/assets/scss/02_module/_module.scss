@@ -228,10 +228,14 @@
     background-color: $mainColor;
     border: none;
     cursor: pointer;
+    &:link,
+    &:visited{
+      color: white;
+    }
     &:disabled{
-      color: $medium-gray;
-      border-color: $gray;
-      background-color: $gray;
+      color: $gray-medium;
+      border-color: $gray-base;
+      background-color: $gray-base;
       pointer-events: none;
     }
   }

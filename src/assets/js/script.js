@@ -162,7 +162,18 @@
           });
       }
     });
-  
+
+    // ページ読み込み時にハッシュがあるか確認
+    if (window.location.hash) {
+      var headerHeight = $('.header').outerHeight(); // ヘッダーの高さを取得
+      var target = $(window.location.hash);
+      if (target.length) {
+        $("html, body").css('overflow-x', 'hidden'); // スクロール前にoverflow-xをhiddenに設定
+        $("html, body").scrollTop(target.offset().top - headerHeight); // アニメーションなしでスクロール
+        $("html, body").css('overflow-x', ''); // スクロール後にoverflow-xを元に戻す
+      }
+    }
+
 
   });
 })(jQuery);

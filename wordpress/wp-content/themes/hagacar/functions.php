@@ -1,12 +1,9 @@
 <?php
-/**___________________________________________________________   ___________
-__  ____/__  __ /__  ____/__    |__  __/__  ____/_  __ /__  | / /__  ____/
-_  /    __  /_/ /_  __/  __  /| |_  /  __  __/  _  / / /_   |/ /__  __/
-/ /___  _  _, _/_  /___  _  ___ |  /   _  /___  / /_/ /_  /|  / _  /___
-/____/  /_/ |_| /_____/  /_/  |_/_/    /_____/  /____/ /_/ |_/  /_____/
-
- * DATE: 2024/10/16
- * AUTHOR: CREATEONE
+/**-+-+-+-+-+-+-+-+-+-+-+-+-+
+|O|N|E|T|A|K|E|P|R|O|J|E|C|T|
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+ * DATE: 2024/11/09
+ * AUTHOR: OneTakeProject
  * URL: http://createone.jp/
  */
 
@@ -14,199 +11,274 @@ _  /    __  /_/ /_  __/  __  /| |_  /  __  __/  _  / / /_   |/ /__  __/
   ダッシュボード
 ///////////////////////////////// */
 
-//ダッシュボード---------------------------------------------------------
-/**
- * カスタム投稿タイプの投稿数をダッシュボードに表示する
- */
+// カスタム投稿タイプの投稿数をダッシュボードに表示する
 add_action(
-    'dashboard_glance_items',
-    function ($elements) {
-        global $wp_post_types;
-        global $user_level;
-        global $user_ID;
+  'dashboard_glance_items',
+  function ($elements) {
+      global $wp_post_types;
+      global $user_level;
+      global $user_ID;
 
-        $custom_post_types = get_post_types(array('_builtin' => false, 'public' => true,), 'object', 'and'); // カスタム投稿取得
-        if (!$custom_post_types) {
-            return;
-        } else {
-            foreach ($custom_post_types as $custom_post_type) {
-                $name = $custom_post_type->name;
-                $label = $custom_post_type->labels->name;
-                $num_posts = wp_count_posts($name);
-                $num = number_format_i18n($num_posts->publish);
-                if (current_user_can('edit_posts')) {
-                    $elements[] = '<a href="edit.php?post_type=' . $name . '" class="' . $name . '-count">' . $num . '件の' . $label . '</a>';
-                }
-            }
-            return $elements;
-        }
-    }
+      $custom_post_types = get_post_types(array('_builtin' => false, 'public' => true,), 'object', 'and'); // カスタム投稿取得
+      if (!$custom_post_types) {
+          return;
+      } else {
+          foreach ($custom_post_types as $custom_post_type) {
+              $name = $custom_post_type->name;
+              $label = $custom_post_type->labels->name;
+              $num_posts = wp_count_posts($name);
+              $num = number_format_i18n($num_posts->publish);
+              if (current_user_can('edit_posts')) {
+                  $elements[] = '<a href="edit.php?post_type=' . $name . '" class="' . $name . '-count">' . $num . '件の' . $label . '</a>';
+              }
+          }
+          return $elements;
+      }
+  }
 );
 
-
-/**
- * ウィジェットを非表示
- */
+// ウィジェットを非表示
 remove_action('welcome_panel', 'wp_welcome_panel');
 
-
-
-/**
- * 現在の状況（概要）の中身を色々非表示にする
- */
+// 現在の状況（概要）の中身を色々非表示にする
 add_action(
-    'wp_dashboard_setup',
-    function () {
-        global $wp_meta_boxes;
-        unset($wp_meta_boxes['dashboard']['normal']['core']['aj_dashboard_widget']);   // Async JavaScript
-        unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_site_health']);   // サイトヘルスステータス
-        unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_activity']);   // アクティビティ
-        unset($wp_meta_boxes['dashboard']['normal']['core']['wpseo-dashboard-overview']);   // YoastSEO
-        unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_recent_comments']);   // 最近のコメント
-        unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_incoming_links']);   // 被リンク
-        unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_plugins']);   // プラグイン
-        unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press']);   // クイック投稿
-        unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_recent_drafts']);   // 最近の下書き
-        unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']);   // WordPressブログ
-        unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_secondary']);   // WordPressフォーラム
-    }
+  'wp_dashboard_setup',
+  function () {
+      global $wp_meta_boxes;
+      unset($wp_meta_boxes['dashboard']['normal']['core']['aj_dashboard_widget']);   // Async JavaScript
+      unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_site_health']);   // サイトヘルスステータス
+      unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_activity']);   // アクティビティ
+      unset($wp_meta_boxes['dashboard']['normal']['core']['wpseo-dashboard-overview']);   // YoastSEO
+      unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_recent_comments']);   // 最近のコメント
+      unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_incoming_links']);   // 被リンク
+      unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_plugins']);   // プラグイン
+      unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press']);   // クイック投稿
+      unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_recent_drafts']);   // 最近の下書き
+      unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']);   // WordPressブログ
+      unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_secondary']);   // WordPressフォーラム
+  }
 );
 
-
-//管理画面全般---------------------------------------------------------
-
-/**
- * ログイン中だけCSS追加
- */
+// ログイン中だけCSS追加
 add_action('wp_head', 'adminbar_custom');
 function adminbar_custom()
 {
-    if (is_user_logged_in()) :
-        echo '<style type="text/css">
-        @media print, screen and (max-width: 768px ){
-          #wpadminbar{
-            position:fixed;
-          }
-          .header{
-            top:46px!important;
-          }
+  if (is_user_logged_in()) :
+      echo '<style type="text/css">
+      @media print, screen and (max-width: 768px ){
+        #wpadminbar{
+          position:fixed;
         }
-        @media print, screen and (min-width: 769px ){
-          .header{
-            top:32px!important;
-          }
+        .header{
+          top:46px!important;
         }
-    </style>';
-    endif;
+      }
+      @media print, screen and (min-width: 769px ){
+        .header{
+          top:32px!important;
+        }
+      }
+  </style>';
+  endif;
 }
 
-
-/**
- * ログイン画面のロゴを変更
- */
+// ログイン画面のロゴを変更
 add_action(
-    'login_head',
-    function () {
-        echo '<style type="text/css">
-        #login h1 a {
-          width: 320px;
-          height: 100px;
-          background-repeat: no-repeat !important;
-          background-position: center top;
-          -moz-background-size:contain;
-          -ms-background-size:contain;
-          -o-background-size:contain;
-          -webkit-background-size:contain;
-          background-size:contain;
-          margin-bottom:20px;
-          pointer-events: none;
+  'login_head',
+  function () {
+      echo '<style type="text/css">
+      #login h1 {
+        display: block;
+        width: 320px;
+        height: 100px;
+        margin: 0 auto;
+        background-image:url(' . get_theme_file_uri() . '/login_logo.png);
+        background-repeat: no-repeat;
+        background-position: center top;
+        background-size: contain;
+        a{
+          visibility:hidden;
         }
-        #login h1 a {
-          background-image:url(' . get_theme_file_uri() . '/login_logo.png);
-        }
-      </style>';
-    }
+      }
+    </style>';
+  }
 );
 
+// 管理画面投稿一覧ページにCSSを適用
+add_action(
+'admin_head',
+function () {
+    echo '<style type="text/css">
+    .featured-image img, .featured-image-none{ max-height: unset; height: auto;}
+  </style>';
+}
+);
 
-/**
- * 表示オプション非表示
- */
+// 表示オプション非表示
 function custom_columns($columns)
 {
-    unset($columns['tags']);
-    unset($columns['comments']);
-    unset($columns['hsm_pagetitle']);
-    unset($columns['hsm_keywords']);
-    unset($columns['hsm_description']);
-    unset($columns['hsm_description']);
-    return $columns;
+  unset($columns['tags']);
+  unset($columns['comments']);
+  unset($columns['hsm_pagetitle']);
+  unset($columns['hsm_keywords']);
+  unset($columns['hsm_description']);
+  unset($columns['hsm_description']);
+  return $columns;
 }
 add_filter('manage_posts_columns', 'custom_columns');
 add_filter('manage_pages_columns', 'custom_columns');
 
-
-/**
- * 管理バー
- */
+// 管理バー
 add_action(
-    'wp_before_admin_bar_render',
-    function () {
-        global $wp_admin_bar, $user_level;
-        if (current_user_can('activate_plugins')) {
-            $wp_admin_bar->remove_menu('wp-logo'); // Wpロゴ
-            $wp_admin_bar->remove_node('comments'); // コメント
-            $wp_admin_bar->remove_menu('updates'); // 更新
-            $wp_admin_bar->remove_menu('wpseo-menu'); // SEO
-        } else {
-            $wp_admin_bar->remove_menu('wp-logo'); // Wpロゴ
-            $wp_admin_bar->remove_node('comments'); // コメント
-            $wp_admin_bar->remove_menu('updates'); // 更新
-            $wp_admin_bar->remove_menu('wpseo-menu'); // SEO
-            $wp_admin_bar->remove_menu('new-content'); //新規
-        }
-    }
+  'wp_before_admin_bar_render',
+  function () {
+      global $wp_admin_bar, $user_level;
+      if (current_user_can('activate_plugins')) {
+          $wp_admin_bar->remove_menu('wp-logo'); // Wpロゴ
+          $wp_admin_bar->remove_node('comments'); // コメント
+          $wp_admin_bar->remove_menu('updates'); // 更新
+          $wp_admin_bar->remove_menu('wpseo-menu'); // SEO
+      } else {
+          $wp_admin_bar->remove_menu('wp-logo'); // Wpロゴ
+          $wp_admin_bar->remove_node('comments'); // コメント
+          $wp_admin_bar->remove_menu('updates'); // 更新
+          $wp_admin_bar->remove_menu('wpseo-menu'); // SEO
+          $wp_admin_bar->remove_menu('new-content'); //新規
+      }
+  }
 );
 
-/**
- * サイドメニュー
- */
+// サイドメニュー
 add_action('admin_menu', function () {
-    remove_menu_page('edit-comments.php'); // 「コメント」を非表示
-    remove_menu_page('separator1'); // 「ダッシュボード」区切りを非表示
-    remove_menu_page('separator2'); // 「外観」の間の区切りを非表示
+  remove_menu_page('edit-comments.php'); // 「コメント」を非表示
+  remove_menu_page('separator1'); // 「ダッシュボード」区切りを非表示
+  remove_menu_page('separator2'); // 「外観」の間の区切りを非表示
 });
 
 
 
 
 /* /////////////////////////////////
-  投稿一覧と投稿編集画面
+投稿一覧と投稿編集画面
 ///////////////////////////////// */
 // 固定ページでのみグーテンベルクを無効化
 add_filter('use_block_editor_for_post_type', 'disable_gutenberg_for_pages', 10, 2);
 function disable_gutenberg_for_pages($is_enabled, $post_type) {
-    if ($post_type === 'page') {
-        return false; // 固定ページでグーテンベルクを無効化
-    }
-    return $is_enabled; // 他の投稿タイプではグーテンベルクを有効
+  if ($post_type === 'page') {
+      return false; // 固定ページでグーテンベルクを無効化
+  }
+  return $is_enabled; // 他の投稿タイプではグーテンベルクを有効
 }
 
-// 固定ページと mwwpform でビジュアルエディターを無効化
+// 固定ページとmwwpformでビジュアルエディターを無効化
 add_filter('user_can_richedit', 'disable_visual_editor_for_pages_and_mwwpform');
 function disable_visual_editor_for_pages_and_mwwpform($can_richedit) {
-    if (get_post_type() === 'page' || get_post_type() === 'mw-wp-form') {
-        return false; // 固定ページと mwwpform でビジュアルエディターを無効化
-    }
-    return $can_richedit; // 他の投稿タイプではビジュアルエディターを有効
+  if (get_post_type() === 'page' || get_post_type() === 'mw-wp-form') {
+      return false; // 固定ページと mwwpform でビジュアルエディターを無効化
+  }
+  return $can_richedit; // 他の投稿タイプではビジュアルエディターを有効
 }
 
+// 自動挿入されるPタグを削除する
 add_action('template_redirect', 'conditionally_remove_wpautop');
 function conditionally_remove_wpautop() {
-    if (is_page()) { // 固定ページの場合のみ
-        remove_filter('the_content', 'wpautop');
-    }
+  if (is_page()) { // 固定ページの場合のみ
+      remove_filter('the_content', 'wpautop');
+      remove_filter('the_excerpt', 'wpautop');
+  }
 }
+
+// カテゴリー選択部分で「新規カテゴリーを追加」と「よく使うもの」を非表示にする
+function hide_category_tabs_adder(){
+global $pagenow, $post_type, $post;
+if (is_admin() && ($pagenow == 'post-new.php' || $pagenow == 'post.php')) {
+  list($html) = null;
+
+  if (is_singular('post')) {
+    // 投稿の場合
+    $taxonomies = get_post_taxonomies($post->ID);
+  } else {
+    // 投稿タイプの場合
+    $taxonomies = get_object_taxonomies($post_type);
+  }
+  if (!empty($taxonomies)) {
+    foreach ($taxonomies as $taxonomy) {
+      $html .= '#' . $taxonomy . '-tabs, #' . $taxonomy . '-adder {display:none;} ';
+    }
+  }
+  echo '<style type="text/css">
+  #category-tabs, #category-adder {display:none;}
+  .components-button.is-link {display:none;}
+  .tabs-panel{max-height:100%!important;border:none!important;}
+  ' . $html . '
+  </style>';
+}
+}
+add_action('admin_head', 'hide_category_tabs_adder');
+
+// カテゴリーをチェックした時に、並び順が変更にならないようにする
+function ps_wp_terms_checklist_args($args, $post_id){
+if (isset($args['checked_ontop']) !== false) {
+  $args['checked_ontop'] = false;
+}
+return $args;
+}
+add_filter('wp_terms_checklist_args', 'ps_wp_terms_checklist_args', 10, 2);
+
+// Gutenberg用のCSSを読み込む
+add_action('enqueue_block_assets', function () {
+if (is_front_page()) return;
+$editor_style_url = get_theme_file_uri('/style.css');
+wp_enqueue_style('theme-editor-style', $editor_style_url);
+});
+function gutenberg_support_setup(){
+if (is_front_page()) return;
+add_theme_support('wp-block-styles');
+}
+add_action('after_setup_theme', 'gutenberg_support_setup');
+
+// エディター用のCSSを読み込む
+function custom_editor_fonts() {
+$editor_style_url = get_theme_file_uri('/style.css');
+add_editor_style( $editor_style_url );
+}
+add_action( 'after_setup_theme', 'custom_editor_fonts' );
+
+// タグ・カテゴリー無効化
+function my_unregister_taxonomies(){
+global $wp_taxonomies;
+
+/*
+   * 投稿機能から「カテゴリー」を削除
+   */
+// if (!empty($wp_taxonomies['category']->object_type)) {
+//   foreach ($wp_taxonomies['category']->object_type as $i => $object_type) {
+//       if ($object_type == 'post') {
+//           unset($wp_taxonomies['category']->object_type[$i]);
+//       }
+//   }
+// }
+
+/*
+* 投稿機能から「タグ」を削除
+*/
+if (!empty($wp_taxonomies['post_tag']->object_type)) {
+  foreach ($wp_taxonomies['post_tag']->object_type as $i => $object_type) {
+    if ($object_type == 'post') {
+      unset($wp_taxonomies['post_tag']->object_type[$i]);
+    }
+  }
+}
+
+return true;
+}
+add_action('init', 'my_unregister_taxonomies');
+
+// アイキャッチ画像をサポートするようにテーマを設定
+function mytheme_setup() {
+add_theme_support('post-thumbnails'); // アイキャッチ画像サポートを有効化
+}
+add_action('after_setup_theme', 'mytheme_setup');
 
 
 
@@ -228,7 +300,7 @@ add_action(
 add_action(
     'wp_head',
     function () {
-        echo '<link rel="preload" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" as="style" onload="this.onload=null;this.rel=\'stylesheet\'">';
+        echo '<link rel="preload" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap&family=Noto+Sans+JP:wght@100..900&display=swap" as="style" onload="this.onload=null;this.rel=\'stylesheet\'">';
         echo '<link rel="preload" href="'.home_url('/assets/vendor/slick/slick.css').'" as="style" onload="this.onload=null;this.rel=\'stylesheet\'">';
     }
 );
@@ -254,7 +326,7 @@ add_action(
         wp_enqueue_script('assets-vendor-velocity', home_url('/assets/vendor/velocity/velocity.min.js'), null, null, true);
         wp_enqueue_script('assets-vendor-velocity-ui', home_url('/assets/vendor/velocity/velocity.ui.min.js'), null, null, true);
         wp_enqueue_script('assets-vendor-slick', home_url('/assets/vendor/slick/slick.min.js'), null, null, true);
-        wp_enqueue_script('assets-js-script', home_url('/assets/js/script.js'), null, null, true);
+        wp_enqueue_script('assets-js-script', home_url('/assets/js/script.js?' . $timestamp), null, null, true);
 
 
         //固定ページ
@@ -421,3 +493,57 @@ function display_news_shortcode($atts)
 }
 
 add_shortcode('display_news', 'display_news_shortcode');
+
+
+
+
+
+/* /////////////////////////////////
+	Contact Form 7カスタム
+///////////////////////////////// */
+// Return-Path設定
+add_action('phpmailer_init', function($phpmailer){
+	$phpmailer->SMTPKeepAlive = true;
+	$phpmailer->Sender = 'haga@hagacar.com';
+});
+
+// ふりがな判定
+function wpcf7_validate_hurigana($result, $tag) {
+    $tag = new WPCF7_Shortcode($tag);
+    $name = $tag->name;
+    $value = isset($_POST[$name]) ? trim(wp_unslash(strtr((string) $_POST[$name], "\n", " "))) : "";
+
+    // 入力項目名が 'name_kana' の場合に実行
+    if ($name === "name_kana") {
+        // カタカナ以外が含まれている場合
+        // if (!preg_match("/^[ァ-ヶー]+$/u", $value)) {
+        //     $result->invalidate($tag, "カタカナで入力してください。");
+        // }
+        // ひらがな以外が含まれている場合
+        if (!preg_match("/^[ぁ-んー]+$/u", $value)) {
+          $result->invalidate($tag, "ひらがなで入力してください。");
+        }
+    }
+    return $result;
+}
+add_filter('wpcf7_validate_text', 'wpcf7_validate_hurigana', 11, 2);
+add_filter('wpcf7_validate_text*', 'wpcf7_validate_hurigana', 11, 2);
+
+// pタグの自動生成無効化
+add_filter('wpcf7_autop_or_not', '__return_false');
+
+// Contact Form 7用にユニークなtracking_numberを生成する関数
+function generate_tracking_number() {
+  // 例: 現在の年月日とランダムな数値を組み合わせた番号
+  $tracking_number = strtoupper(uniqid());
+  return $tracking_number;
+}
+
+// Contact Form 7にtracking_numberのショートコードを追加
+function add_tracking_number_shortcode($form_tag) {
+  if ($form_tag['name'] == 'tracking_number') {
+      $form_tag['values'] = array(generate_tracking_number());
+  }
+  return $form_tag;
+}
+add_filter('wpcf7_form_tag', 'add_tracking_number_shortcode');

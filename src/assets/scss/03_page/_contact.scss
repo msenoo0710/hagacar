@@ -32,226 +32,228 @@
         text-align: center;
       }
     }
-  &__phone{
-      padding: 40px;
-      background-color: $light-gray;
-      border-radius: 2em;
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-      @include smartphone{
-        padding: 20px;
-        border-radius: 1em;
-        gap: 20px;
-      }
-      h2{
-          @include fontSize($fs_min:24, $fs_max:40);
-          color: $mainColor;
-          font-weight: 700;
-          line-height: 1.2;
-      }
-      a{
-          @include fontSize($fs_min:45, $fs_max:64);
-          font-weight: 700;
-          line-height: 1;
-          text-decoration: none;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          gap: 10px;
-          @include trans;
-          &:hover{
-              opacity: 0.6;
-          }
-      }
-      p{
-          @include fontSize($fs_min:16, $fs_max:20);
-          font-weight: 500;
-          text-align: center;
-      }
-  }
-  &__content{
-      padding: 40px;
-      background-color: $light-gray;
-      border-radius: 2em;
-      display: flex;
-      flex-direction: column;
-      gap: 40px;
-      @include smartphone{
-        padding: 20px;
-        border-radius: 1em;
-        gap: 20px;
-      }
-      h2{
-          @include fontSize($fs_min:24, $fs_max:40);
-          color: $mainColor;
-          font-weight: 700;
-          line-height: 1.2;
-      }
-      p{
-          font-weight: 500;
-      }
-      dl{
-          display: flex;
-          flex-direction: column;
-          gap: 20px;
-          dt{
-              @include fontSize($fs_min:16, $fs_max:20);
-              line-height: 1;
-              border-left: 8px solid $mainColor;
-              font-weight: 700;
-              display: flex;
-              align-items: center;
-              gap: 10px;
-              padding-left: 0.5em;
-              margin-top: 1em;
-              .required{
-                  color: white;
-                  font-weight: 700;
-                  padding: 0.4em 0.4em;
-                  border-radius: 0.5em;
-                  background-color: $mainColor;
-              }
-          }
-          dd{
-              flex-direction: column;
-              p{
-                  font-weight: 600;
-              }
-          }
-      }
-      /**
-      * 入力フォーム調整
-      **/
-      .radio,.checkbox{
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: flex-start;
-          gap: 1rem 2rem;
-          label{
-              cursor: pointer;
-              display: flex;
-              gap: 1.2rem;
-          }
-          input{
-              cursor: pointer;
-              transform: scale(2);
-              accent-color: $mainColor;
-              @include smartphone{
-                  transform: scale(1.5);
-              }
-          }
-      }
-      .checkbox{
-          display: grid;
-          grid-template-columns: repeat(3,1fr);
-          @include smartphone{
-              grid-template-columns: 1fr;
-          }
-      }
-      select,
-      input[type="text"],
-      input[type="tel"],
-      input[type="email"]{
-          width: 100%;
-          color: $fontColor;
-          font-size: 1.6rem;
-          height: 50px;
-          background-color: white;
-          border: none;
-          border-radius: 0.5em;
-      }
-      textarea{
-          width: 100%;
-          color: $fontColor;
-          font-size: 1.6rem;
-          background-color: white;
-          border: none;
-          border-radius: 0.5em;
-      }
-  }
-  &__policy{
-      &--agree{
-          .mwform-checkbox-field{
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              gap: 1.5em;
-              a{
-                  color: $mainColor;
-                  text-decoration: underline;
-                  &:hover{
-                      text-decoration: none;
-                  }
-              }
-              label{
-                  display: flex;
-                  gap: 1em;
-                  .mwform-checkbox-field-text{
-                      display: none;
-                  }
-              }
-              input{
-                  transform: scale(3);
-                  accent-color: $mainColor;
-              }
-              p{
-                  @include fontSize($fs_min:16, $fs_max:20);
-                  font-weight: 500;
-                  br{
-                    @include screen{
+    &__phone{
+        padding: 40px;
+        background-color: $gray-light;
+        border-radius: 2em;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        @include smartphone{
+            padding: 20px;
+            border-radius: 1em;
+            gap: 20px;
+        }
+        h2{
+            @include fontSize($fs_min:24, $fs_max:40);
+            color: $mainColor;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        a{
+            @include fontSize($fs_min:45, $fs_max:64);
+            font-weight: 700;
+            line-height: 1;
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            @include trans;
+            &:hover{
+                opacity: 0.6;
+            }
+        }
+        p{
+            @include fontSize($fs_min:16, $fs_max:20);
+            font-weight: 500;
+            text-align: center;
+        }
+    }
+    &__content{
+        padding: 40px;
+        background-color: $gray-light;
+        border-radius: 2em;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        @include smartphone{
+            padding: 20px;
+            border-radius: 1em;
+            gap: 20px;
+        }
+        h2{
+            @include fontSize($fs_min:24, $fs_max:40);
+            color: $mainColor;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        p{
+            font-weight: 500;
+        }
+        dl{
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            dt{
+                @include fontSize($fs_min:16, $fs_max:20);
+                line-height: 1;
+                border-left: 8px solid $mainColor;
+                font-weight: 700;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                padding-left: 0.5em;
+                margin-top: 1em;
+                .required{
+                    color: white;
+                    font-weight: 700;
+                    padding: 0.4em 0.4em;
+                    border-radius: 0.5em;
+                    background-color: $mainColor;
+                }
+            }
+            dd{
+                flex-direction: column;
+                p{
+                    font-weight: 600;
+                }
+            }
+        }
+        /**
+        * 入力フォーム調整
+        **/
+        .radio,.checkbox{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            gap: 1rem 2rem;
+            label{
+                cursor: pointer;
+                display: flex;
+                gap: 1.2rem;
+            }
+            input{
+                cursor: pointer;
+                transform: scale(2);
+                accent-color: $mainColor;
+                @include smartphone{
+                    transform: scale(1.5);
+                }
+            }
+        }
+        .checkbox{
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            @include smartphone{
+                grid-template-columns: 1fr;
+            }
+        }
+        select,
+        input[type="text"],
+        input[type="tel"],
+        input[type="email"]{
+            width: 100%;
+            color: $fontColor;
+            font-size: 1.6rem;
+            height: 50px;
+            background-color: white;
+            border: none;
+            border-radius: 0.5em;
+        }
+        textarea{
+            width: 100%;
+            color: $fontColor;
+            font-size: 1.6rem;
+            background-color: white;
+            border: none;
+            border-radius: 0.5em;
+        }
+        /**
+        * wpcf7
+        **/
+        .wpcf7-form{
+            @include flex-gap(40px, $direction: column);
+        }
+    }
+    &__policy{
+        &--agree{
+            display: flex;
+            justify-content: center;
+            gap: 1em;
+            a {
+                color: $mainColor;
+                text-decoration: underline;
+
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+            p{
+                @include fontSize($fs_min:16, $fs_max:20);
+                font-weight: 500;
+            }
+            .wpcf7-form-control-wrap{
+                .wpcf7-checkbox{
+                    input {
+                        transform: scale(2);
+                        accent-color: $mainColor;
+                    }
+                    .wpcf7-list-item-label{
                         display: none;
                     }
-                  }
-              }
-          }
-      }
-  }
-  &__submit{
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      @include smartphone{
-          flex-direction: column;
-          .back{
-              order:2;
-          }
-          .send{
-              order: 1;
-          }
-      }
-  }
-  &__thanks{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 40px;
-      h2{
-          color: $mainColor;
-          text-align: center;
-          font-weight: 500;
-          @include smartphone {
-              font-size: 2rem;
-          }
-          @include screen {
-              font-size: 2.6rem;
-          }
-      }
-      p{
-          font-size: 1.6rem;
-          color: $fontColor;
-          text-align: center;
-          padding: 1rem;
-          a{
-              font-size: 2rem;
-              color: $mainColor;
-              font-weight: 600;
-              text-decoration: none;
-              @include screen{
-              pointer-events: none;
-              }
-          }
-      }
-  }
+                }
+                .wpcf7-not-valid-tip{
+                    display: none;
+                }
+            }
+        }
+    }
+    &__submit{
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        @include smartphone{
+            flex-direction: column;
+            .back{
+                order:2;
+            }
+            .send{
+                order: 1;
+            }
+        }
+    }
+    &__thanks{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+        h2{
+            color: $mainColor;
+            text-align: center;
+            font-weight: 500;
+            @include smartphone {
+                font-size: 2rem;
+            }
+            @include screen {
+                font-size: 2.6rem;
+            }
+        }
+        p{
+            font-size: 1.6rem;
+            color: $fontColor;
+            text-align: center;
+            padding: 1rem;
+            a{
+                font-size: 2rem;
+                color: $mainColor;
+                font-weight: 600;
+                text-decoration: none;
+                @include screen{
+                pointer-events: none;
+                }
+            }
+        }
+    }
   }
 }

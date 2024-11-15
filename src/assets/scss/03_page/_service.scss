@@ -107,7 +107,7 @@
           padding: 40px 60px;
           gap: 20px;
           counter-increment: item;
-          background-color: $light-gray;
+          background-color: $gray-light;
           border-radius: 2em;
           @include smartphone{
             border-radius: 1em;

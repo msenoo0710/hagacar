@@ -8,34 +8,24 @@
 /*====================================
   カラー
 =====================================*/
-$blue: #e60012; // ブルー（青）
+$primary: #e60012; // レッド
 $white: #FFFFFF; // ホワイト（白）
 $black: #1A1A1C; // ブラック（黒）
-$light-gray: #f6f7fb; // ライトグレー（淡い灰色）
-$gray: #E6E6E6; // グレー（灰色）
-$medium-gray: #AAAAAA; // ライトグレー（薄い灰色）
-$light-rose: #F4CCCC; // ライトローズ（淡い赤）
-$light-coral: #D99694; // ライトコーラル（淡い赤）
-$crimson-red: #e60012; // 真紅
-$black-dark: #000000; // ブラック（黒）
-$dark-gray: #333333; // ダークグレー（濃い灰色）
-$pastel-pink: #FCEEEF; // パステルピンク（淡い赤）
-$light-gray-alt: #D9D9D9; // ライトグレーオルト（代替淡い灰色）
+$gray-light: #F6F7FB; // ライトグレー（淡い灰色）
+$gray-light-alt: #D9D9D9; // ライトグレーオルト（代替淡い灰色）
+$gray-medium: #AAAAAA; // ミディアムグレー（中間の灰色）
+$gray-dark: #333333; // 濃い灰色
+$gray-dark-alt: #666666; // 別の濃い灰色
+$gray-muted: #BBBBBB; // ライトグレー（薄い灰色）
+$gray-base: #E6E6E6; // 基本のグレー
+$gray-rich: #1A1A1C; // 濃いめの黒に近い灰色
 
-$mainColor: $blue;
-$mainLightColor: $crimson-red;
-$mainBgColor: $light-rose;
+$mainColor: $primary;
 $baseColor: $white;
-$fontColor: $black;
-$bgColor: $light-gray;
-$borderColor: $gray;
-$hoverColor: $medium-gray;
-
-$Corporate1: $blue;
-$TextHover: $medium-gray;
-$BgColor: $light-gray;
-$RichBlack: $black-dark;
-$Gray: $dark-gray;
+$fontColor: $gray-dark;
+$bgColor: $gray-light;
+$borderColor: $gray-base;
+$hoverColor: $gray-muted;
 
 
 /*====================================
@@ -77,13 +67,15 @@ $splh:1.4;
   余白
 =====================================*/
 
-@mixin flex-gap($gap-desktop, $gap-smartphone, $direction: column) {
+@mixin flex-gap($gap-desktop, $gap-smartphone: null, $direction: column) {
   display: flex;
   flex-direction: $direction;
   gap: $gap-desktop;
 
-  @include smartphone {
-    gap: $gap-smartphone;
+  @if $gap-smartphone != null {
+    @include smartphone {
+      gap: $gap-smartphone;
+    }
   }
 }
 
